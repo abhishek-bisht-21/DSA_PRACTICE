@@ -345,6 +345,71 @@ vector<int> nodeToRootPath(Node* node, int data) {
 }
 
 
+//________________________________Diameter Of A Binary Tree_________________________________________
+
+/*
+
+Diameter of the tree is the max distance between two nodes in a binary tree.
+The diameter of a BT can pass through following regions.
+
+1) Root (option1 = lheight + rheight + 2)
+2) L subtree ( option2 = ldia)
+3) R subtree (option3 = rdia)
+
+
+*/
+
+//Height function
+int height(Node *node)
+{
+    return node == nullptr ? -1 : max(height(node->left), height(node->right)) + 1; // for no of edges: -1, and in terms of no of nodes return 0;
+}
+
+// Appraoch 1 --> O(N^2)
+int diameter(Node *root)
+{
+   if(root == nullptr){
+       return -1;
+   } 
+
+   int lh = height(root->left);
+   int rh = height(root->right);
+
+   int option1 = lh + rh + 2; // when root is passing through the root.
+
+   int option2 = diameter(root->left); // when diameter is in left subtree
+   int option3 = diameter(root->right);// when diameter is in right subtree
+
+   return max(option1,max(option2,option3));
+}
+
+// Approach 2 --> O(N)
+int dia = -1e8;
+int diameter_btr(Node* root){
+
+	if(root == nullptr){
+		return -1;
+	}
+
+	int lht = diameter_btr(root->left);
+	int rht  = diameter_btr(root->right);
+
+	int height = max(lht,rht) + 1;
+	dia = max(dia,lht+rht+2);
+
+
+	return height;
+}
+
+
+int diameter(Node *root){
+    diameter_btr(root);
+    return dia;
+}
+
+// ____________________________________________Print K Levels Down_________________________________
+
+
 
 
 int main(){
