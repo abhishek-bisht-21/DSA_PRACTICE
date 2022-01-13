@@ -409,8 +409,205 @@ int diameter(Node *root){
 
 // ____________________________________________Print K Levels Down_________________________________
 
+void kLevelsDown(Node* node, int k){
+  // write your code here
+  if(node==nullptr){
+      return;
+  }
+
+  if(k == 0){
+      cout<<node->data<<endl;
+      return;
+  }
+
+  kLevelsDown(node->left,k-1);
+  kLevelsDown(node->right,k-1);
+}
 
 
+//_______________________________________Transform To Left-cloned Tree__________________________________
+
+/*
+
+We are keeping the faith that left sub tree and right sub tree knows how to do this work. 
+They will return the correct ans to our root node. Now our work is to create a clone of
+root node and connect that clone with root as well as to the left sub tree.
+Right sub tree will be directly connected to our root node.
+
+*/
+
+Node* createLeftCloneTree(Node* node) {
+  // write your code here
+  
+  if(node == nullptr){
+      return nullptr;
+  }
+  
+  Node* left = createLeftCloneTree(node->left);
+  Node* right = createLeftCloneTree(node->right);
+  Node* newNode = new Node(node->data,left,nullptr);
+  
+  node->left = newNode;
+  node->right = right;
+  return node;
+
+}
+
+//   __________________________________________Transform To Normal From Left-cloned Tree___________________
+
+/*
+
+On the left call(node->left->left) we are doing this cause root node will have its clone attached to its immediate left.
+So are calling on rootNodes->left->left and having faith on it that we knows how to transform the cloned tree back to normal tree.
+On the right side we are making call on the immediate right only cause its a left cloned tree and right subtree wont be 
+needing special attention.
+
+In the post order we are connecting node->left with ans from left subtree and node->right with ans from right subtree
+
+
+
+*/
+
+
+Node* transBackFromLeftClonedTree(Node* node) {
+    
+    if(node == nullptr){
+        return nullptr;
+    }
+    
+    Node* lnn = transBackFromLeftClonedTree(node->left->left);
+    Node* rnn = transBackFromLeftClonedTree(node->right);
+    
+    node->left = lnn;
+    node->right = rnn;
+    
+    return node;
+    
+}
+
+
+
+// _______________________________________Remove Leaves In Binary Tree____________________________
+
+
+/*
+Whenever we are making changing the binary tree then we have to collect newly created 
+left subtree and  right subtree in the recursive calls.
+
+
+
+*/
+
+Node* removeLeaves(Node* node) {
+  // write your code here
+  
+  if(node == nullptr){
+      return nullptr;
+  }
+
+ 
+    if (node->left == nullptr && node->right == nullptr)
+  {
+    free(node);
+    return nullptr;
+  }
+
+  node->left = removeLeaves(node->left);
+  node->right = removeLeaves(node->right);
+
+
+  return node;
+
+
+}
+
+
+// ____________________________1325. Delete Leaves With a Given Value__________________________________
+
+class Solution {
+public:
+    TreeNode* removeLeafNodes(TreeNode* r, int target) {
+    if (r == nullptr) return nullptr;
+    r->left = removeLeafNodes(r->left, target);
+    r->right = removeLeafNodes(r->right, target);
+    return (r->left == r->right && r->val == target) ? nullptr : r;
+    }
+};
+  
+
+
+//_______________________________________________Print Single Child Nodes____________________________
+
+/*
+
+
+In the parent nullptr is passed initially that's why we have made a check whether parent is null our not.
+We are doing our work in preorder. We are checking if a node has only left child or only right child
+then only we are printing it.
+
+*/
+
+
+void printSingleChildNodes(Node* node, Node* parent) {
+  // write your code here
+  
+  if(node == nullptr){
+      return ;
+  }
+  
+  if(parent != nullptr && parent->left == node && parent->right == nullptr){
+      cout << node->data << endl;
+  }else if(parent != nullptr and parent->right == node and parent->left == nullptr){
+      cout << node->data << endl;
+  }
+  
+  printSingleChildNodes(node->left,node);
+  printSingleChildNodes(node->right,node);
+  
+ 
+
+}
+
+
+// _______________________________Tilt Of Binary Tree_____________________________________
+
+/*
+
+In this function we are actually calculating the sum of the all the nodes in the Binary tree and 
+meanwhile also calculating the tilt of the binary tree. 
+tilt of node is defined as the abs(left_sub_Tree_Sum - right_sub_Tree_Sum)
+
+
+*/
+
+
+class Solution {
+public:
+    
+     int helper(TreeNode* root, int &tilt){
+        if(root == nullptr){
+            return 0;
+        }
+        
+        int lsum = helper(root->left,tilt);
+        int rsum = helper(root->right,tilt);
+        
+        int tsum = lsum + rsum + root->val;
+        
+        int ltilt = abs(lsum - rsum);
+        tilt+=ltilt;
+        
+        return tsum;
+        
+    }
+    
+    
+    int findTilt(TreeNode* root) {
+       int tilt = 0;
+       int sum = helper(root,tilt);
+       return tilt;
+    }
+};
 
 int main(){
 
