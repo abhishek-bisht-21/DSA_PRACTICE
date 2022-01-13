@@ -578,6 +578,7 @@ meanwhile also calculating the tilt of the binary tree.
 tilt of node is defined as the abs(left_sub_Tree_Sum - right_sub_Tree_Sum)
 
 
+
 */
 
 
@@ -589,7 +590,9 @@ public:
             return 0;
         }
         
+        // Will return l sub tree sum and also will make a change in tilt
         int lsum = helper(root->left,tilt);
+        // Will return r sub tree sum and also will make a change in tilt
         int rsum = helper(root->right,tilt);
         
         int tsum = lsum + rsum + root->val;
@@ -608,6 +611,104 @@ public:
        return tilt;
     }
 };
+
+
+
+
+
+
+// __________________________________________________Is A Binary Search Tree________________________________________
+
+
+
+/*
+
+For node to be BST -> node->data >= max_of_left_subtree and node->data <= min_of_right_subtree.
+For a tree to be BST -> left subtree and right subtree should BST and node should be BST.
+
+To calculate the min and max at each node. The parent requires and the min of both left subtree and 
+right subtree and similarly to calculate the max of the parent node it requires the max of left and
+right subtree both. 
+
+Each node should have min and max calculated for it, cause we never know that node can be either
+left child of the parent our the right child of the parent.
+
+
+*/
+
+
+class bst {
+public:
+  bool isbst = false;
+  int max = 0;
+  int min = 0;
+};
+
+bst Bst(Node* node) {
+
+  if (node == nullptr)
+  {
+    bst bres;
+    bres.isbst = true;
+    bres.max = INT_MIN;
+    bres.min = INT_MAX;
+    return bres;
+  }
+  bst l = Bst(node->left);
+  bst r = Bst(node->right);
+
+  bst ans;
+
+  ans.max = max(node->data, max(l.max, r.max));
+  ans.min = min(node->data, min(l.min, r.min));
+
+  if (l.isbst == true && r.isbst == true && (l.max < node->data && r.min > node->data)) {
+    ans.isbst = true;
+  }
+  return ans;
+
+}
+
+
+//____________________________________Is Balanced Tree______________________________
+
+/*
+
+ A binary tree is balanced if for every node the gap between height's of it's left and right subtree is not more than 1.
+ In this question we are actually calculating the height of the binary tree and at each node's postorder figuring
+ out that whether that node is balanced or not.
+
+ Balanced => abs(lht - rht) <= 1.
+
+*/
+
+bool isbal = true;
+
+int isbalance(Node* node)
+{
+  if (node == nullptr)
+  {
+    return -1;
+  }
+
+  int l = isbalance(node->left);
+  int r = isbalance(node->right);
+
+  int gap = abs(l - r);
+  if (gap > 1)
+  {
+    isbal = false;
+  }
+  int th = max(l, r) + 1;
+
+  return th;
+
+}
+
+
+
+
+
 
 int main(){
 
