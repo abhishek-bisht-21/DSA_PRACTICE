@@ -705,8 +705,81 @@ int isbalance(Node* node)
 
 }
 
+// ________________________________________________Print Nodes K Distance Away________________________________
+
+/*
+
+For this question we would be needing two functions. NodeToRootPath and PrintKLevelsDown with blockNode.
+We would first call on NodeToRootPath function and collect its ans in an vector then we would run a loop
+over that vector and call printKLevelsDown on it one by one and keep updating the blocknode and also 
+the distance we can travel with each successive node. 
+
+With each successive node the distance we can travel will decrease (k-i).
+BlockNode will be previous node from which we called  PrintKLevelsDown
+cause we gonna avoid going on the side which not actually k dist apart 
+from the original node but it might seams so when we call printKlevelsdown function.
+Cause ultimately we want k distance apart nodes from the target node.
 
 
+*/
+
+
+vector<Node*> nodeToRootPath(Node *node, int data) {
+    vector<Node*> temp;
+    if (node == nullptr){
+      return temp;
+    }
+
+    vector<Node*> ans;
+    if(node->data == data) {
+      ans.push_back(node);
+      return ans;
+    }
+    vector<Node*> left = nodeToRootPath(node->left, data);
+    if(left.size() > 0) {
+      left.push_back(node);
+      return left;
+    }
+    vector<Node*> right = nodeToRootPath(node->right, data);
+    if(right.size() > 0) {
+      right.push_back(node);
+      return right;
+    }
+    return temp;
+  }
+
+
+void printKLevelsDown(Node *node, int k, Node *block)
+{
+    if (node == nullptr || node == block)
+        return;
+
+    if (k == 0)
+    {
+        cout << node->data <<endl;
+        return;
+    }
+
+    printKLevelsDown(node->left, k - 1, block);
+    printKLevelsDown(node->right, k - 1, block);
+}
+
+
+void printKNodesFar(Node *node, int data,int k)
+{
+    vector<Node*> ans;
+    ans = nodeToRootPath(node,data);
+    Node *blockNode = nullptr;
+    for(int i=0;i<ans.size();i++){
+        printKLevelsDown(ans[i],k-i,blockNode);
+        blockNode = ans[i];
+    }
+
+    return;
+
+}
+
+// _____________________________________________________
 
 
 
