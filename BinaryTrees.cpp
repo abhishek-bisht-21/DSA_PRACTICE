@@ -779,7 +779,125 @@ void printKNodesFar(Node *node, int data,int k)
 
 }
 
-// _____________________________________________________
+// _____________________________________________________Path To Leaf From Root In Range____________________________
+
+/*
+
+We are given the low and high and we have to check that the of nodes from root to leaf remain under this given
+range only and if they are in this range. Then we can print them.
+
+We will do our work in the pre order and we will keep adding node->data in the sum and also in the path.
+When we reach the leaf node then we haven't yet added the leaf nodes data in the sum, so we will 1st add it 
+then we will put on a check there if they are in the range or not.
+
+If they are in the range then we will print it otherwise simply return.
+
+
+
+*/
+
+
+void pathToLeafFromRoot(Node* node, string path,int sum, int lo, int hi){
+
+  if(node == nullptr){
+    return;
+  }
+
+  if(node->left == nullptr and node->right == nullptr){
+    sum+=node->data;
+    if(sum >= lo and sum <= hi){
+      cout << path + to_string(node->data) << endl;
+    }
+
+    return;
+  }
+
+  pathToLeafFromRoot(node->left,path+to_string(node->data)+" ",sum+node->data,lo,hi);
+  pathToLeafFromRoot(node->right,path+to_string(node->data)+" ",sum+node->data,lo,hi);
+
+
+}
+
+
+// ____________________________________________ LARGEST BST SUBTREE__________________________________________________________
+
+/*
+
+For this We have to first write the code for isBST and then we have to continue from there onwards.
+If the subtree is isBST then root of the current subtree is node itself and left->size + right->size + 1
+will be its overall size.  
+
+If it is not a BST itself then if left->size > right->size then left->size will be size of the subtree and
+left's root will be root of the subtree and vice-versa if right->size > left->size.
+
+But how can we say that if current node is not bst then its left subtree or right subtree will be BST and
+how can we directly consider them as an option for Largest BST Subtree.
+
+
+*/
+
+
+// This is class two things are added root and size.
+class bst {
+public:
+  bool isbst = false;
+  int max = 0;
+  int min = 0;
+  Node* root = nullptr;
+  int size = 0;
+};
+
+
+bst Bst(Node* node) {
+
+  // In the base case setting some values for the bst class and return object of class bst.
+  // From the leaf node they will set there values and return to its parent telling them that
+  // they are valid bst and they will update there min and max also.
+  if (node == nullptr)
+  {
+    bst bres;
+    bres.isbst = true;
+    bres.max = INT_MIN;
+    bres.min = INT_MAX;
+    return bres;
+  }
+
+
+  bst l = Bst(node->left);
+  bst r = Bst(node->right);
+
+
+  bst ans;
+
+  //Doing the basic math to calculate min and max for a node. Cause my parent requires 
+  // my min and max to calculate its own.
+  ans.max = max(node->data, max(l.max, r.max));
+  ans.min = min(node->data, min(l.min, r.min));
+
+  // checking if ans is a valid bst or not.
+  if (l.isbst == true && r.isbst == true && (l.max < node->data && r.min > node->data)) {
+    ans.isbst = true;
+  }
+
+    if (ans.isbst == true)
+  {
+    ans.root = node;
+    ans.size = l.size + r.size + 1;
+  }
+  else if (l.size > r.size)
+  {
+    ans.root = l.root;
+    ans.size = l.size;
+  }
+  else
+  {
+    ans.root = r.root;
+    ans.size = r.size;
+  }
+
+  return ans;
+}
+
 
 
 
