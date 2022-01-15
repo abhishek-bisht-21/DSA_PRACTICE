@@ -834,6 +834,12 @@ But how can we say that if current node is not bst then its left subtree or righ
 how can we directly consider them as an option for Largest BST Subtree.
 
 
+root prooperty is actually signifying the root of the largest bst in that subtree, beshak woh bst
+humein root pr hi mila ho. And the size signifies not the size of that particular node, but the size
+of the largest bst size in that subtree. That's why it is correct to directly compare the sizes of left and 
+right and decide which will be the size at a particular node and also setting the root of largest subtree.
+
+
 */
 
 
@@ -843,8 +849,8 @@ public:
   bool isbst = false;
   int max = 0;
   int min = 0;
-  Node* root = nullptr;
-  int size = 0;
+  Node* root = nullptr; // This indicates largest BST root
+  int size = 0; // this indicates largest BST size.
 };
 
 
