@@ -350,6 +350,245 @@ public:
 // ______________________________________________________MERGE SORT IN LL_______________________________________________
 
 
+ Node* getMid(Node* head, Node* tail){
+        Node* slow = head, *fast = head;
+        while(fast->next != tail && fast->next->next != tail){
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        
+        return slow;
+    }
+
+
+    //merge two sorted linkedlist
+    linkedlist mergeTwoSortedLists(linkedlist l1, linkedlist l2) {
+          linkedlist ans;
+          Node* one = l1.head;
+          Node* two = l2.head;
+          
+          while(one != nullptr && two != nullptr){
+              if(one->data < two->data){
+                  ans.addLast(one->data);
+                  one = one->next;
+              }else{
+                  ans.addLast(two->data);
+                  two = two->next;
+              }
+          }
+          while(one!=nullptr){
+              ans.addLast(one->data);
+              one = one->next;
+          }
+          while(two !=nullptr){
+              ans.addLast(two->data);
+              two = two->next;
+          }
+          
+          return ans;
+    }
+    
+    linkedlist mergeSort(Node* head,Node* tail ){
+        if(head == tail){
+            linkedlist base;
+            base.addLast(head->data);
+            return base;
+        }
+        
+        Node* mid = getMid(head,tail);
+        linkedlist fsh = mergeSort(head, mid);
+        linkedlist ssh = mergeSort(mid->next, tail);
+        
+        return mergeTwoSortedLists(fsh,ssh);
+    }
+
+// ___________________________________________________________DELETE DUPLICATE NODES___________________________________
+
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        
+        ListNode* curr = head;
+        
+    
+    if(curr == NULL){
+        return NULL;
+    }
+    
+    if(curr -> next == NULL){
+        return head;
+    }
+        
+    ListNode* dummy = new ListNode(1e8);
+    ListNode* itr = dummy;
+    
+    while(curr != NULL){
+        
+        if(curr -> val != itr ->val){
+            
+            itr->next = curr;
+            itr = itr->next;
+        }
+       
+            curr = curr -> next;
+        
+    }
+    
+    itr->next = nullptr;
+    return dummy->next;
+    }
+};
+
+
+// APPROACH 2
+
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        
+        ListNode* curr = head;
+        ListNode* next_next;
+    
+    if(curr == NULL){
+        return NULL;
+    }
+    
+    if(curr -> next == NULL){
+        return head;
+    }
+    
+    while(curr->next != NULL){
+        
+        if(curr -> val == curr -> next ->val){
+            next_next = curr -> next -> next;
+            delete(curr->next);
+            curr->next = next_next;
+        }
+        
+        else{
+            curr = curr -> next;
+        }
+    }
+    
+    return head;
+    }
+};
+
+// _______________________________________________________Linked List To Stack Adapter_____________________________________
+
+
+class LLToStackAdapter{
+public:
+LinkedList l1;
+
+int size1(){
+    return l1.size();
+}
+void push(int val){
+// ADD FIRST    
+node *newnode = new node;
+    newnode->val=val;
+    newnode->next=NULL;
+    if(head==NULL){
+        head=newnode;
+    }
+    else{
+        newnode ->next =head;
+        head = newnode;
+    }
+
+    
+}
+int pop(){
+	// REMOVE FIRST
+    if(size1() == 0){
+        cout << "Stack underflow";
+        return -1;
+    }else{
+        int val=l1.first();
+        if(head==NULL) return;
+     	 node *temp=head;
+      	head=head->next;
+      	delete temp;
+        return val;
+    }
+}
+int top(){
+    if(size1() == 0){
+        cout << "Stack underflow";
+        return -1;
+    }else{
+        int val=l1.first();
+        return val;
+    }
+}
+
+
+
+// _________________________________________________Linked List To Queue Adapter____________________________________________
+
+public class Main {
+
+  public static class LLToQueueAdapter {
+    LinkedList<Integer> list;
+
+    public LLToQueueAdapter() {
+      list = new LinkedList<>();
+    }
+
+    int size() {
+      return list.size(); 
+    }
+
+    void add(int val) {
+	    // Addlast
+	node *newnode = new node;
+        newnode->val=val;
+        newnode->next=NULL;   
+         if(head==NULL){
+       
+        head=newnode;
+
+    }
+    else{
+        node *temp = head;
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next = newnode;
+    }
+    }
+
+    int remove() {
+      if(size() == 0){
+	      // Remove first
+        cout << "Queue underflow";
+        return -1;
+       } else {
+	       
+      	int tr=head->val;
+      	node *temp=head;
+      	head=head->next;
+      
+     	 delete temp;
+      	return tr;
+        
+       }
+    }
+
+    int peek() {
+      if(size() == 0){
+        cout << "Queue underflow";
+        return -1;
+       } else {
+        return list.getFirst();
+       }
+    }
+  }
+
+
+//   _________________________________________________
+
 int main(){
 
 }
