@@ -737,3 +737,6 @@ class QueueToStackAdapter{
         return rem;
     }
 };
+
+// ________________________________________Number following a pattern________________________________________________
+
