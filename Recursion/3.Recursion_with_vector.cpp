@@ -40,23 +40,27 @@ vector<string> gss(string s){
 vector<string> keypad = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
 
 vector<string> getKPC(string s){
-    if(s.size() ==0){
+    if(s.size() == 0){
         vector<string> empty_ans;
         empty_ans.push_back("");
         return empty_ans;
     }
-    
-    string new_question = s.substr(1, s.size()-1);
-    vector<string> small_ans = getKPC(new_question);
+    // 79
+    string new_question = s.substr(1, s.size()-1); // Seperating 7
+    vector<string> small_ans = getKPC(new_question); // Recursion on 9 --> [y,z]
     
     vector<string> ans;
     
+    // Doing our work ->  7 * [y,z] => [t,u] * [y,z] = [ty,tz,uy,uz]
+
     char ch = s.at(0);
-    int idx = ch - '0';
+    int idx = ch - '0'; // converting the char into integer
     
-    for(int i=0; i<keypad[idx].size(); i++){
-        char c = keypad[idx].at(i);
-        for(int j=0; j<small_ans.size(); j++){
+    for(int i=0; i<keypad[idx].size(); i++){ // Loop will run till the size of the string at that particulat index.
+
+        char c = keypad[idx].at(i); // Taking out each character one by one, present at that particular index of Keypad
+
+        for(int j=0; j<small_ans.size(); j++){ // Cartesian product with existing ans, which recursion has brought to us.
             string str = small_ans[j];
             string final = c + str;
             ans.push_back(final);
@@ -88,14 +92,44 @@ vector<string> get_stair_paths(int n){
     vector<string>ans;
     for(int step =1; step<=3; step++){
         vector<string> small_ans = get_stair_paths(n-step);
+
         for(int j=0; j<small_ans.size(); j++){
             string ss = small_ans[j];
             char no_of_steps = (char)(step + '0');
-            string ans_to_add =no_of_steps + ss;
+            string ans_to_add = no_of_steps + ss;
             ans.push_back(ans_to_add);
         }
     }
     return ans;
+}
+
+
+
+ public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        if(sr > dr || sc > dc){
+            return new ArrayList<>();
+        }
+
+        if(sr == dr && sc == dc){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }
+
+        ArrayList<String> hpaths = getMazePaths(sr, sc + 1, dr, dc);
+        ArrayList<String> vpaths = getMazePaths(sr + 1, sc, dr, dc);
+        ArrayList<String> paths = new ArrayList<>();
+
+        for(String hpath: hpaths){
+            paths.add(''h'' + hpath);
+        }
+
+        for(String vpath: vpaths){
+            paths.add(''v'' + vpath);
+        }
+
+        return paths;
+    }
 }
 
 
