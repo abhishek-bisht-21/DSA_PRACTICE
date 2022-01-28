@@ -7,7 +7,7 @@ public:
         int i=0;
         int j=0;
         
-        while(j < typed.length()){
+        while(i < name.length() and j < typed.length()){
             
             if(i < name.size() and name[i] == typed[j]){
                 i++;
