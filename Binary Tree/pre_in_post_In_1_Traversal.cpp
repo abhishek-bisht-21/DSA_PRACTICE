@@ -18,6 +18,7 @@ public:
             if(it.second == 1) {
                 pre.push_back(it.first->val); 
                 it.second++; 
+		// Push it back into the stack after incrementing the top value
                 st.push(it); 
 
                 if(it.first->left != NULL) {
