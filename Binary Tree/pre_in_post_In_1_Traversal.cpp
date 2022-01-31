@@ -7,7 +7,8 @@ public:
         vector<int> pre, in, post;
         if(root == NULL) return post;
 
-        while(!st.empty()) {
+        while(!st.empty()) {	
+	    // always 1st pop the top of the stack
             auto it = st.top(); 
             st.pop(); 
 
