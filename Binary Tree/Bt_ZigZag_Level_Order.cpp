@@ -28,3 +28,42 @@ public:
         return ans;
     }
 };
+
+
+// ___________________ Without Reverse Function______________________________
+
+
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        
+        vector<vector<int>> ans;
+        if(root == nullptr) return ans;
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        bool leftToRight = true;
+        
+        while(!q.empty()){
+            int size = q.size();
+            vector<int> sans(size);
+            for(int i=0;i<size;i++){
+                
+                TreeNode* rv = q.front();
+                q.pop();
+                
+                int index = (leftToRight == true) ? i : (size - 1 - i);
+                
+                sans[index] = rv->val;
+                
+                if(rv->left) q.push(rv->left);
+                if(rv->right) q.push(rv->right);
+            }
+            
+            leftToRight = !leftToRight;
+            ans.push_back(sans);
+        }
+        
+        return ans;
+    }
+};
