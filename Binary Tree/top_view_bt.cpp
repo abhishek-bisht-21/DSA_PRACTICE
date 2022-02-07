@@ -17,6 +17,8 @@ class Solution
             
             Node* node = p.first;
             int line = p.second;
+	    // We only want first node in each verticalOrder.
+	    // Therefore if that verticalOrder(line) in the map is already filled we won't change it. We will you forward.
             if(mpp.find(line) == mpp.end()) mpp[line] = node->data;
             
             if(node->left){
