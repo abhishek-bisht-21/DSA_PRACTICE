@@ -28,8 +28,8 @@ public:
         vector<vector<int>> ans;
         for(auto p : nodes){
             vector<int> sans;
-            for(auto q: p.second){
-                sans.insert(sans.end(), q.second.begin(),q.second.end());
+            for(auto q: p.second){ //p.second -> map<int,multiset<int>>
+                sans.insert(sans.end(), q.second.begin(),q.second.end()); // Storing the entire multiset inside the vector
             }
             ans.push_back(sans);
         }
