@@ -34,3 +34,6 @@ public:
             
     }
 };
+
+
+// Approach 2 (InPlace Solution)
