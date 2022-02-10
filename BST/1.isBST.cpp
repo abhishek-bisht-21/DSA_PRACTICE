@@ -63,3 +63,19 @@ public:
         return right;
     }
 };
+
+
+// Approach 3 (Passing a range)
+
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        return isValidBST(root, LONG_MIN,LONG_MAX);
+    }
+    
+    bool isValidBST(TreeNode* root, long minValue , long maxValue){
+        if(root == nullptr) return true;
+        if(root->val >= maxValue or root->val <= minValue) return false;
+        return isValidBST(root->left,minValue,root->val) && isValidBST(root->right,root->val,maxValue);
+    }
+};
