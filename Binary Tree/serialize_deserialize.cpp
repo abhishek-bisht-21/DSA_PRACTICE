@@ -25,10 +25,13 @@ public:
             TreeNode* p = q.front();
             q.pop();
             
-            if(p == NULL) s.append("#,");
+            if(p == NULL) s.append("#,"); // signifies that no child
+
             else s.append(to_string(p->val)+',');
             
             if(p != nullptr){
+		// Pushing both the child so that we can know whats the status of both.
+		// if both are null then place two(2) ##
                 q.push(p->left);
                 q.push(p->right);
             }
@@ -47,6 +50,7 @@ public:
         TreeNode *root = new TreeNode(stoi(str));
         queue<TreeNode*> q; 
         q.push(root); 
+
         while(!q.empty()) {
             
             TreeNode *node = q.front(); 
@@ -57,6 +61,8 @@ public:
                 node->left = NULL; 
             }
             else {
+		    // if not null then push ele in the queue and
+		    // make a node and attach it on the left
                 TreeNode* leftNode = new TreeNode(stoi(str)); 
                 node->left = leftNode; 
                 q.push(leftNode); 
@@ -67,6 +73,8 @@ public:
                 node->right = NULL; 
             }
             else {
+		     // if not null then push ele in the queue and
+		    // make a node and attach it on the right
                 TreeNode* rightNode = new TreeNode(stoi(str)); 
                 node->right = rightNode;
                 q.push(rightNode); 
