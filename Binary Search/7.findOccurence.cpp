@@ -59,4 +59,8 @@ int LastOccurence(int *arr, int n, int x){
 int findOccurence(int arr[], int n,int x){
 	int ans = LastOccurence(arr,n,x) - firstOccurence(arr,n,x) + 1;
 	return ans;
+	/*
+		if(a[lb] != x) return 0;
+		return ub-lb;
+	*/
 }
