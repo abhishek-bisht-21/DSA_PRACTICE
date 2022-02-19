@@ -57,6 +57,6 @@ int LastOccurence(int *arr, int n, int x){
 
 
 int findOccurence(int arr[], int n,int x){
-	int ans = LastOccurence(arr,n,x) - firstOccurence(arr,n,x);
+	int ans = LastOccurence(arr,n,x) - firstOccurence(arr,n,x) + 1;
 	return ans;
 }
