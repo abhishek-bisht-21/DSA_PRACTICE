@@ -16,6 +16,7 @@ int firstOccurence(int *arr, int n, int x){
 		if(arr[mid] == x){
 			ans = mid;
 			high = mid - 1;
+			continue;
 		}
 		// Never lies on the right half
 		else if( arr[mid] > x){
