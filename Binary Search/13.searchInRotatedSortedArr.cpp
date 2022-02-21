@@ -20,8 +20,11 @@ public:
             if(nums[mid] == target){
                 return mid;
             }
-            
+	
+		// If the left part is sorted
              else if(nums[si] <= nums[mid]){
+
+		// either it lies in the left part or not    
                 if(nums[si] <= target && target <= nums[mid]){
                     ei = mid - 1;
                 }
@@ -30,6 +33,8 @@ public:
                 }
             }
             else{
+
+		// either it lies in the right part or not  
                 if(nums[mid] < target && target <= nums[ei]){
                     si = mid+1;
                 }
