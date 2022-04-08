@@ -1,4 +1,7 @@
 
+#include <bits/stdc++.h>
+using namespace std;
+
 // Find first repeated character
 
 string firstRepChar(string s)
