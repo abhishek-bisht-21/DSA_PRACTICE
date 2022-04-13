@@ -2,6 +2,10 @@
 using namespace std;
 
 
+// Space Complexity -> O(m)
+// Time Complexity -> O(m+n)
+
+
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
