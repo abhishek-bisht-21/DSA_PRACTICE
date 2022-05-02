@@ -25,7 +25,10 @@ public:
     }
     
     void addnode(node* newnode) {
+
+        // Save the Head next in temp pointer.
         node* temp = head->next;
+        // first make the connection of new Node with temp node
         newnode->next = temp;
         newnode->prev = head;
         head->next = newnode;
@@ -40,12 +43,19 @@ public:
     }
     
     int get(int key_) {
+
+        // Check if Exists in the map or not
         if (m.find(key_) != m.end()) {
+
+            // Get its address from the Map
             node* resnode = m[key_];
             int res = resnode->val;
+            // Erase the entry from the Map
             m.erase(key_);
+            // Delete Node and Add it next to Head coz its Recently Used
             deletenode(resnode);
             addnode(resnode);
+            // Enter in the Map with its new Address
             m[key_] = head->next;
             return res; 
         }
@@ -54,16 +64,22 @@ public:
     }
     
     void put(int key_, int value) {
+
+        // If the Key Already exist in the Map.
         if(m.find(key_) != m.end()) {
             node* existingnode = m[key_];
             m.erase(key_);
             deletenode(existingnode);
         }
+
+        // If Capacity if Full, Then delete the Least Recently used.
         if(m.size() == cap) {
+          // Tails prev is Least Recently used.  
           m.erase(tail->prev->key);
           deletenode(tail->prev);
         }
         
+        // Add the node next to Head and Enter the new Address of the Node in Map
         addnode(new node(key_, value));
         m[key_] = head->next; 
     }
