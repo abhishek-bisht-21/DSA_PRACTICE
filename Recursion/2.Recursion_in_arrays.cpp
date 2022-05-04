@@ -8,7 +8,7 @@
 
 
 void display(int arr[], int idx, int n){
-
+    // Base Case
     if (idx == n)
         return;
 
@@ -20,7 +20,7 @@ void display(int arr[], int idx, int n){
 // _____________________________________________________________Display Array In Reverse________________________________________________
 
 void display(int arr[], int idx, int n){
-
+    // Base Case
     if (idx == n)
         return;
 
@@ -34,6 +34,7 @@ void display(int arr[], int idx, int n){
 
 int max(int arr[], int idx, int n){
 
+    // Base Case
     if (idx == n - 1)
         return arr[idx];
 
@@ -50,6 +51,7 @@ int max(int arr[], int idx, int n){
 
 int firstIndex(int arr[], int idx, int x, int n){
 
+    // Base Case
     if (idx == n)
         return -1;
 
@@ -65,6 +67,8 @@ int firstIndex(int arr[], int idx, int x, int n){
 // ________________________________________________________________ Last Index____________________________________________________________
 
 int lastIndex(int arr[], int idx, int x, int n){
+
+    // Base Case
     if (idx == n)
         return -1;
 
