@@ -8,7 +8,7 @@
 // 4. At Every Node -> With Robbery at A = Without Robbery(q) at B + Without Robbery(q) at C.
 //                     Without Robbery at A = max(l.p,l.q) + max(r.p,r.q)
 
-
+// APPROACH 1
 class Solution {
 public:
     
@@ -32,5 +32,45 @@ public:
         
         vector<int> ans = HouseRobber_(root);
         return max(ans[0], ans[1]);
+    }
+};
+
+
+// APPROACH 2
+
+class Solution {
+public:
+    
+    class robPair{
+        
+        public:
+        int withRob;
+        int withoutRob;
+        
+        robPair(int withRob, int withoutRob){
+            this->withRob = withRob;
+            this->withoutRob = withoutRob;
+        }
+    };
+    
+    robPair* houseRob(TreeNode* root){
+        if(root == nullptr){
+            robPair* base = new robPair(0,0); 
+            return base;
+        }
+        
+        robPair *lp = houseRob(root->left);
+        robPair *rp = houseRob(root->right);
+        robPair *mp = new robPair(0,0);
+        mp->withRob = lp->withoutRob + root->val +  rp->withoutRob;
+        mp->withoutRob = max(lp->withRob,lp->withoutRob) + max(rp->withRob,rp->withoutRob);
+        
+        return mp;
+        
+    }
+    
+    int rob(TreeNode* root) {
+        robPair *res = houseRob(root);
+        return max(res->withRob,res->withoutRob);
     }
 };
