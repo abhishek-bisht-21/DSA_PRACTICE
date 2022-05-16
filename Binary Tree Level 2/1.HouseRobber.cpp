@@ -22,8 +22,8 @@ public:
             vector<int> right = HouseRobber_(node->right);
 
             vector<int> myAns{0, 0};
-            myAns[0] = max(left[0], left[1]) + max(right[0], right[1]);
-            myAns[1] = left[0] + node->val + right[0];
+            myAns[0] = max(left[0], left[1]) + max(right[0], right[1]); // Without Robbey
+            myAns[1] = left[0] + node->val + right[0]; // WithRobbery
 
             return myAns;
         }
