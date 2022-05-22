@@ -48,3 +48,31 @@ public:
         return root;
     }
 };
+
+// Approach 3
+
+class Solution {
+public:
+    
+    int idx = 0;
+    TreeNode* bstFromPreorder(vector<int> preorder, int lr, int rr) {
+        
+        if(idx >= preorder.size() or preorder[idx] < lr or preorder[idx] > rr){
+            return nullptr;
+        }
+        
+        TreeNode* root = new TreeNode(preorder[idx++]);
+        root->left = bstFromPreorder(preorder,lr,root->val);
+        root->right = bstFromPreorder(preorder,root->val,rr);
+        
+        return root;
+    }
+    
+    
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        int n = preorder.size();
+        int lr = -1e9;
+        int rr = 1e9;
+        return bstFromPreorder(preorder,lr,rr);
+    }
+};
