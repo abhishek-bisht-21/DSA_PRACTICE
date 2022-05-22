@@ -7,7 +7,6 @@ void exactlyOneChild_(TreeNode* root, vector<int> ans){
 
 	if(root->left == NULL or root->right == NULL){
 		ans.push_back(root->data);
-		return;
 	}
 
 	exactlyOneChild_(root->left,ans);
