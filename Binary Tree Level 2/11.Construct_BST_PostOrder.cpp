@@ -28,13 +28,13 @@ public:
     int idx = 0;
     TreeNode* bstFromPostorder(vector<int> postorder, int lr, int rr) {
         
-        if(idx >= postorder.size() or postorder[idx] < lr or postorder[idx] > rr){
+        if(idx < 0  or postorder[idx] < lr or postorder[idx] > rr){
             return nullptr;
         }
         
-        TreeNode* root = new TreeNode(postorder[idx++]);
-        root->left = bstFromPostorder(postorder,lr,root->val);
+        TreeNode* root = new TreeNode(postorder[idx--]);
         root->right = bstFromPostorder(postorder,root->val,rr);
+        root->left = bstFromPostorder(postorder,lr,root->val);
         
         return root;
     }
