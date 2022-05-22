@@ -44,7 +44,7 @@ Node* constructBst(int arr[], int n)
 	// This is for root node.
         if (rp->par == nullptr)
             root = node;
-	// Now decide whose child will this node will become
+	// Now decide whose child will this node will become and which child left/right
         else
         {
             if (node->data < rp->par->data)
