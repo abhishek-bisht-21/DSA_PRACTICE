@@ -79,3 +79,40 @@ class Solution
        return ans;
     }
 };
+
+// APPROACH 3:
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        
+        vector<int> ans;
+        if(root == nullptr){
+            return ans;
+        }
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty()){
+            int size = q.size();
+            ans.push_back(q.front()->val);
+            
+            while(size-- > 0){
+                
+                TreeNode* rn = q.front();
+                q.pop();
+                
+                if(rn->right){
+                    q.push(rn->right);
+                }
+                
+                if(rn->left){
+                    q.push(rn->left);
+                }
+            }
+        }
+        
+        return ans;
+    }
+};
