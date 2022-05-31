@@ -1,28 +1,26 @@
 
-#include <bits/stdc++.h>
-using namespace std;
-
-// Find first repeated character
-
 string firstRepChar(string s)
 {
-   //code here.
-   string ans="";
-   unordered_map<char,int>m;
-   int mini=INT_MAX;
-   for(int i=0;i<s.length();i++){
-       
-       if(m[s[i]]!=0){
-           
-           if(mini>i){
-               mini=i;
-               ans=s[i];
-           }
-       }
-       m[s[i]]++;
-   }
-   if(mini==INT_MAX){
-       return "-1";
-   }
-   return ans;
+    
+    int h[26]={0};
+    bool flag=false;
+    string res;
+    // traverse the string from left to right
+    for(int i=0;i<s.length();i++)
+    {
+        // checking if current element is coming first time or not
+        if(h[s[i]-'a']>=1)
+        {
+            res = s[i];
+            flag=true;
+            break;
+        }
+        else
+            h[s[i]-'a']++;
+    }
+    // if there is no repeated character present.
+    if(flag==false)
+        res = "-1";
+        
+    return res;    
 }
