@@ -143,7 +143,7 @@ int main(){
 
 	//  HEAP SORT
 	heapSort(arr,n);
-		cout << "PRINT THE ARRAY NOW"<< endl;
+		cout << "PRINT THE ARRAY AFTER SORTING"<< endl;
 	for(int i=1;i<=n;i++){
 		cout << arr[i] << " ";
 	}
