@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//  WE ARE FOLLOWING 1-BASED INDEXING IN THE FOLLOWING IMPLEMENTATION
+
 class heap{
 	public:
 	int arr[100];
