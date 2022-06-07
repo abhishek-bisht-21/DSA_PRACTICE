@@ -72,8 +72,29 @@ class heap{
 	
 };
 
+void heapify(int arr[], int n, int i){
+	int largest = i;
+	int left = 2 * i;
+	int right = 2 * i + 1;
+
+	if(left < n && arr[largest] < arr[left]){
+		largest = left;
+	}
+
+	if(right < n && arr[largest] < arr[right]){
+		largest = right;
+	}
+
+	if(largest != i){
+		swap(arr[largest], arr[i]);
+		heapify(arr,n,largest);
+	}
+}
+
+
 // HEAP IS A COMPLETE BINARY TREE. CBT IS A BINARY TREE WHOSE ALL LEVELS ARE COMPLETELY FILLED EXCEPT THE 
 // LAST LEVEL AND LAST LEVEL IS FILLED FROM LEFT TO RIGHT.
+// IN A CBT NODES IN RANGE (N/2+1 TO N) ARE LEAF NODES.	
 
 int main(){
 
@@ -85,6 +106,24 @@ int main(){
 	h.insert(54);
 
 	h.print();
+
+	h.delteFromHeap();
+	h.print();
+
+	int arr[6] = {-1,54,53,55,52,50};
+	int n = 5;
+	// IN A CBT INTERNAL NODES ARE 0 to N/2. THEREFORE WE NEED TO OPERATE ON THEM ONLY.
+	// IN A CBT N/2 to N are LEAF NODES AND LEAF NODES SATISFIES HEAP ORDER PROPERTY.
+	for(int i=n/2;i>0;i--){
+		heapify(arr,n,i);
+	}
+
+	cout << "PRINT THE ARRAY NOW"<< endl;
+	for(int i=1;i<=n;i++){
+		cout << arr[i] << " ";
+	}
+
+	cout << endl;
 
 	return 0; 
 }
