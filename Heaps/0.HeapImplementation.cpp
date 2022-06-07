@@ -125,6 +125,7 @@ int main(){
 	h.delteFromHeap();
 	h.print();
 
+	// BUILDING HEAP
 	int arr[6] = {-1,54,53,55,52,50};
 	int n = 5;
 	// IN A CBT INTERNAL NODES ARE 0 to N/2. THEREFORE WE NEED TO OPERATE ON THEM ONLY.
