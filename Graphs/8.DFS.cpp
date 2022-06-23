@@ -4,7 +4,7 @@ void dfs(int node,unordered_map<int,list<int>> &adjList,unordered_map<int,bool> 
     component.push_back(node);
     visited[node] = true;
     
-    // Call for every connected node
+    // Recurrsive Call for every connected node
     for(auto nodeNbr: adjList[node]){
         if(!visited[nodeNbr]){
             dfs(nodeNbr,adjList,visited,component);
