@@ -30,7 +30,9 @@ vector<vector<int>> depthFirstSearch(int V, int E, vector<vector<int>> &edges)
     }
     
       vector<vector<int>> ans;
-        
+
+      // There can be different componets of the same graph.
+      // Therefore making a call on each vertex, so that all the components are covered.  
       for(int i=0;i<V;i++){
           if(!visited[i]){
               vector<int> component;
