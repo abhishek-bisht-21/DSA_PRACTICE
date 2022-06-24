@@ -52,8 +52,25 @@ void displayGraph(){
 }
 
 
-void removeEdge(int u, int v){
+int findEdge(int u, int v){
+	int idx = -1;
+	for(int i=0;i<graph[u].size();i++){
 
+		if(graph[u][i].v == v){
+			idx = i;
+			break;
+		}
+	}
+
+	return idx;
+}
+
+void removeEdge(int u, int v){
+	int idx1 = findEdge(u,v);
+	int idx2 = findEdge(v,u);
+
+	graph[u].erase(graph[u].begin()+idx1);
+	graph[v].erase(graph[v].begin()+idx2);
 }
 
 void removeVertex(int u){
