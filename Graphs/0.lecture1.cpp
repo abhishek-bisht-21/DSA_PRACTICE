@@ -38,6 +38,28 @@ void constructGraph(){
 
 }
 
+void displayGraph(){
+
+	for(int i=0;i<N;i++){
+		cout << i << " -> "
+
+		for(Edge e: graph[i]){
+			cout << "(" + to_string(e.v) + ',' + to_string(e.w) + ") ";
+		}
+
+		cout << endl;	
+	}
+}
+
+
+void removeEdge(int u, int v){
+
+}
+
+void removeVertex(int u){
+
+}
+
 
 int main(){
 
