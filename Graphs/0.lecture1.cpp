@@ -29,12 +29,12 @@ void addEdge(int u, int v, int w){
 
 void constructGraph(){
 	addEdge(0,1,10);
-	addEdge(0,1,10);
-	addEdge(0,1,10);
-	addEdge(0,1,10);
-	addEdge(0,1,10);
-	addEdge(0,1,10);
-	addEdge(0,1,10);
+	addEdge(0,3,10);
+	addEdge(1,2,10);
+	addEdge(3,4,40);
+	addEdge(4,5,2);
+	addEdge(4,6,8);
+	addEdge(5,6,3);
 
 }
 
