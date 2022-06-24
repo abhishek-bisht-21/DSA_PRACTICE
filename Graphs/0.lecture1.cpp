@@ -88,8 +88,10 @@ bool hasPath(int src, int dest, vector<bool> &vis){
 		return true;
 	}
 
+	// 1. Mark yourself visited. 
 	vis[src] = true;
 	bool res = false;
+	// 2. For all the Unvisited Neighbours call DFS
 	for(Edge e: graph[src]){
 		if(!vis[e.v]){
 		   res = res || hasPath(e.v,dest,vis);	
