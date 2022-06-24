@@ -82,6 +82,30 @@ void removeVertex(int u){
 }
 
 
+bool hasPath(int src, int dest, vector<bool> &vis){
+
+	if(src == dest){
+		return true;
+	}
+
+	vis[src] = true;
+	bool res = false;
+	for(Edge e: graph[src]){
+		if(!vis[e.v]){
+		   res = res || hasPath(e.v,dest,vis);	
+		}
+		
+	}
+
+	return true;
+}
+
+int printAllPaths(int src, int dest){
+
+}
+
+// Heavy Path / Costly Path -> Print Path and Its Weight
+
 int main(){
 
 	return 0;
