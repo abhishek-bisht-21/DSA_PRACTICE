@@ -102,8 +102,21 @@ bool hasPath(int src, int dest, vector<bool> &vis){
 	return true;
 }
 
-int printAllPaths(int src, int dest){
+int printAllPaths(int src, int dest, vector<bool> &vis, string psf){
 
+	if(src == dest){
+		cout << "Path from src to dest :" << psf << dest << endl;
+		return 1;
+	}
+
+	vis[src] = true;
+	int count = 0;
+	for(Edge e: graph[src]){
+		if(!vis[e.v]){
+			count+= printAllPaths(e.v,dest,vis,psf + to_string(src) + " ");
+		}
+	}
+	vis[src] = false;
 }
 
 // Heavy Path / Costly Path -> Print Path and Its Weight
