@@ -117,6 +117,8 @@ int printAllPaths(int src, int dest, vector<bool> &vis, string psf){
 		}
 	}
 	vis[src] = false;
+
+	return count;
 }
 
 // Heavy Path / Costly Path -> Print Path and Its Weight
