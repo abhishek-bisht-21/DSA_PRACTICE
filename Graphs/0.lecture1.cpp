@@ -75,6 +75,10 @@ void removeEdge(int u, int v){
 
 void removeVertex(int u){
 
+	for(int i = graph[u].size()-1; i >=0; i--){
+		int v = graph[v][i].v;
+		removeEdge(u,v);
+	}
 }
 
 
