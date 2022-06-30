@@ -22,7 +22,7 @@ class Solution{
                 //If sum of elements at indexes i, l and r is 0, we return true.
                 if (x + arr[l] + arr[r] == 0)
                 {
-    				return true;
+    				return true;;
                 }
                 //Else if the sum is less than 0, it means we need to increase the
                 //sum so we increase the left pointer l.
