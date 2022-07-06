@@ -102,12 +102,14 @@ class Solution
 	    queue<int> q;
 	    vector<int> inDegree(V,0);
 	    
+	    // Calculating InDegree For each node/vertex
 	    for(int i=0;i<V;i++){
 	        for(auto it:adj[i]){
 	            inDegree[it]++;
 	        }
 	    }
 	    
+	    // Pushing those vertex in the queue whose inDegree is 0
 	    for(int i=0;i<V;i++){
 	        if(inDegree[i] == 0){
 	            q.push(i);
@@ -116,6 +118,7 @@ class Solution
 	    
 	    vector<int> topo;
 	    
+	    // At the front of the queue we will have those nodes whose indegree is 0 or has become 0 as we process other nodes.
 	    while(!q.empty()){
 	        int frontNode = q.front();
 	        q.pop();
