@@ -45,6 +45,49 @@ class Solution
 };
 
 
+#include<bits/stdc++.h>
+void topoSortDFS(int node,unordered_map<int,list<int>> &adj,stack<int> &st,vector<int> &vis){
+    
+    vis[node] = 1;
+
+    for(auto nbr:adj[node]){
+        if(!vis[nbr]){
+            topoSortDFS(nbr,adj,st,vis);
+        }
+    }
+    st.push(node);
+    
+}
+
+vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
+    // Write your code here
+     vector<int> vis(v,0);
+      stack<int> st;
+      vector<int> ans;
+      unordered_map<int,list<int>> adj;  
+     // Create Adjacency List
+    for(int i=0;i<edges.size();i++){
+        int u = edges[i][0];
+        int v = edges[i][1];
+        
+        adj[u].push_back(v);
+    }
+    
+    for(int i=0;i<v;i++){
+        if(vis[i] == 0){
+            topoSortDFS(i,adj,st,vis);
+        }
+    }
+    
+    while(!st.empty()){
+        ans.push_back(st.top());
+        st.pop();
+    }
+    
+    return ans;
+}
+
+
 
 // BFS APPROACH -> Kahn's Algorithm
 
