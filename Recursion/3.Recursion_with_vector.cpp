@@ -56,7 +56,7 @@ vector<string> getKPC(string s){
     char ch = s.at(0);
     int idx = ch - '0'; // converting the char into integer
     
-    for(int i=0; i<keypad[idx].size(); i++){ // Loop will run till the size of the string at that particulat index.
+    for(int i=0; i<keypad[idx].size(); i++){ // Loop will run till the size of the string at that particular index.
 
         char c = keypad[idx].at(i); // Taking out each character one by one, present at that particular index of Keypad
 
