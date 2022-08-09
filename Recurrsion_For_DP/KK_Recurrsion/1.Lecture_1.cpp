@@ -10,6 +10,15 @@ int sumDigits(int num){
 	return smallAns + sumDigits(num/10);
 }
 
+
+int prodDigits(int num){
+	if(num % 10 == 0){
+		return 1;
+	}	
+	int smallAns = num % 10;
+	return smallAns * sumDigits(num/10);
+}
+
 int fact(int n){
 
 	if(n == 0){
@@ -25,6 +34,8 @@ int main(){
 	int num = 3124;
 	cout << "Factorial of " << n << " is " << fact(n) << endl;
 	cout << "Sum of digits of " << num << " is " << sumDigits(num) << endl;
+	cout << "Product of digits of " << num << " is " << prodDigits(num) << endl;
+
 
 
 	return 0;
