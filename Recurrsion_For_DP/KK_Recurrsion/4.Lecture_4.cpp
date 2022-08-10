@@ -34,11 +34,23 @@ bool isPalindrome(int num)
     return 0;
 }
 
+bool isPalindromeString(string str, int s, int e){
+	if(s <= e){
+		return true;
+	}else{
+		return ((str[s] == str[e]) && isPalindromeString(str,s+1,e-1));
+	}
+}
 
 
 int main(){
 
 	int n = 1221;
-	std::cout << "Is  " << n << " a palindrome " << boolalpha << isPalindrome(n);
+	string str = "malyalam";
+	int e = 7;
+	int s = 0;
+	//std::cout << "Is  " << n << " a palindrome " << boolalpha << isPalindrome(n);
+	std::cout << "Is  " << str << " a palindrome " << boolalpha << isPalindromeString(str,s,e);
+
 	return 0;
 }
