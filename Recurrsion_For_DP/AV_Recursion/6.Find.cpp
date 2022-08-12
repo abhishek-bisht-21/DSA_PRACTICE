@@ -16,7 +16,7 @@ int main(){
 
 	int key = 10;
 	vector<int> v{10,20,30,40,50};
-	cout << "Is Element " << key<< " present in the array " << boolalpha << find(v,key,0);
+	cout << "Is Element " << key<< " present in the array " << boolalpha << find(v,key,0);;
 
 	return 1;
 }
