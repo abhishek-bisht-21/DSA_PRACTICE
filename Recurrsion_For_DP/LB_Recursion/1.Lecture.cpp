@@ -26,11 +26,28 @@ int arraySum(vector<int> &arr, int idx){
 }
 
 
+// Linear Search 
+
+int linearSearch(vector<int> &arr, int idx, int key){
+	if(idx == arr.size()){
+		return -1;
+	}
+
+	if(arr[idx] == key){
+		return idx;
+	}
+
+	return linearSearch(arr,idx+1,key);
+}
+
+
 int main(){
 
 	vector<int> v{1,2,3,4,5,0};
 	int idx = 0;
+	int key = 5;
 	cout << "Is Array Sorted " << boolalpha << isArraySorted(v,idx) << endl;
 	cout << "Array Sum " << arraySum(v,idx) << endl;
+	cout << "Element " << key << " is present at index "<< linearSearch(v,idx,key);
 
 }
