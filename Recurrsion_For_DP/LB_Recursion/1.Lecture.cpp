@@ -5,6 +5,7 @@ using namespace std;
 // Is Array Sorted
 
 bool isArraySorted(vector<int> arr, int idx){
+	// Base Case
 	if(idx == arr.size() - 1){
 		return true;
 	}
@@ -16,6 +17,7 @@ bool isArraySorted(vector<int> arr, int idx){
 // Get Array Sum
 
 int arraySum(vector<int> &arr, int idx){
+	// Base Case
 	if(idx == arr.size()){
 		return 0;
 	}
@@ -29,6 +31,7 @@ int arraySum(vector<int> &arr, int idx){
 // Linear Search 
 
 int linearSearch(vector<int> &arr, int idx, int key){
+	// Base Case
 	if(idx == arr.size()){
 		return -1;
 	}
