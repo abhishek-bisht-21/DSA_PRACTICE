@@ -44,13 +44,38 @@ int linearSearch(vector<int> &arr, int idx, int key){
 }
 
 
+
+// Binary Search
+int BinarySearch(vector<int> &arr, int s, int e, int key){
+
+	if(s <= e){
+		int mid = s + (e-s)/2;
+
+		if(arr[mid] == key){
+			return mid;
+		}
+
+		if(arr[mid] > key){
+			BinarySearch(arr,s,mid-1,key);
+		}
+			
+		return  BinarySearch(arr,mid+1,e,key);
+		
+	}
+
+	return -1;
+}
+
 int main(){
 
-	vector<int> v{1,2,3,4,5,0};
+	vector<int> v{1,2,3,4,5,8};
 	int idx = 0;
 	int key = 5;
+	int size = v.size();
 	cout << "Is Array Sorted " << boolalpha << isArraySorted(v,idx) << endl;
 	cout << "Array Sum " << arraySum(v,idx) << endl;
-	cout << "Element " << key << " is present at index "<< linearSearch(v,idx,key);
+	cout << "LS : Element " << key << " is present at index "<< linearSearch(v,idx,key) << endl;
+	cout << "BS : Element " << key << " is present at index "<< BinarySearch(v,0,size-1,key) << endl;
+
 
 }
