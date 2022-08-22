@@ -66,16 +66,27 @@ int BinarySearch(vector<int> &arr, int s, int e, int key){
 	return -1;
 }
 
+// Nth Term of Fibonacci Series
+
+int fibo(int n){
+	if(n < 2){
+		return n;
+	}
+
+	return fibo(n-1) + fibo(n-2);
+}
+
 int main(){
 
 	vector<int> v{1,2,3,4,5,8};
 	int idx = 0;
 	int key = 5;
 	int size = v.size();
-	cout << "Is Array Sorted " << boolalpha << isArraySorted(v,idx) << endl;
-	cout << "Array Sum " << arraySum(v,idx) << endl;
-	cout << "LS : Element " << key << " is present at index "<< linearSearch(v,idx,key) << endl;
-	cout << "BS : Element " << key << " is present at index "<< BinarySearch(v,0,size-1,key) << endl;
+	// cout << "Is Array Sorted " << boolalpha << isArraySorted(v,idx) << endl;
+	// cout << "Array Sum " << arraySum(v,idx) << endl;
+	// cout << "LS : Element " << key << " is present at index "<< linearSearch(v,idx,key) << endl;
+	// cout << "BS : Element " << key << " is present at index "<< BinarySearch(v,0,size-1,key) << endl;
+	cout << "Fibonacci of Nth Term : " << fibo(6) << endl;
 
 
 }
