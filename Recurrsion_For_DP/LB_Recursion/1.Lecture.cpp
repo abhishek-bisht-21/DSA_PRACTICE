@@ -76,17 +76,36 @@ int fibo(int n){
 	return fibo(n-1) + fibo(n-2);
 }
 
+// Say Digit
+void sayDigit(int n, string arr[]){
+
+	// Base Case
+	if(n == 0){
+		return;
+	}
+
+	// Processing
+	int digit = n % 10;
+	n = n / 10;
+
+	sayDigit(n,arr);
+
+	cout << arr[digit] << " ";
+}
+
 int main(){
 
 	vector<int> v{1,2,3,4,5,8};
 	int idx = 0;
 	int key = 5;
 	int size = v.size();
+	string arr[] = {"zero","one", "two","three","four","five","six","seven","eight","nine"};
 	// cout << "Is Array Sorted " << boolalpha << isArraySorted(v,idx) << endl;
 	// cout << "Array Sum " << arraySum(v,idx) << endl;
 	// cout << "LS : Element " << key << " is present at index "<< linearSearch(v,idx,key) << endl;
 	// cout << "BS : Element " << key << " is present at index "<< BinarySearch(v,0,size-1,key) << endl;
-	cout << "Fibonacci of Nth Term : " << fibo(6) << endl;
+	//cout << "Fibonacci of Nth Term : " << fibo(6) << endl;
+	sayDigit(412,arr);
 
 
 }
