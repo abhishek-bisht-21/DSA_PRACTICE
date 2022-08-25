@@ -77,6 +77,29 @@ void BubbleSort(int arr[], int n){
 	}
 }
 
+
+// Bubble Sort Using Recursion
+
+void BubbleSortRecursive(int arr[], int n){
+
+	// Base Case
+	if(n == 0 or n == 1){
+		return;
+	}
+
+	// Solve for the Largest Element
+	for(int i = 0; i < n-1; i++)
+	{
+		if(arr[i] > arr[i+1]){
+			swap(arr[i], arr[i+1]);
+		}
+	}
+
+	BubbleSortRecursive(arr,n-1);
+	
+
+}
+
 int main(){
 
 	// string str = "DOG";
@@ -102,7 +125,7 @@ int main(){
 	}
 	cout << endl;
 
-	BubbleSort(arr,n);
+	BubbleSortRecursive(arr,n);
 
 
 	cout << "Array Before Bubble Sort: " << endl;
