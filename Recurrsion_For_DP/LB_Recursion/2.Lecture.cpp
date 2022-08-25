@@ -61,6 +61,22 @@ int powerOptimised(int a, int b){
 	return myans;
 }
 
+
+// Bubble Sort
+
+void BubbleSort(int arr[], int n){
+
+	int i,j;
+
+	for(i=0;i<n;i++){
+		for(j=0;j<n-i-1;j++){
+			if(arr[j] > arr[j+1]){
+				swap(arr[j], arr[j+1]);
+			}
+		}
+	}
+}
+
 int main(){
 
 	// string str = "DOG";
@@ -72,12 +88,28 @@ int main(){
 	// string s = "naman";
 	// cout << "Check Palindome : "<< boolalpha << checkPalindrome(s,0,s.length()-1) << endl;
 
-	int a = 2;
-	int b = 5;
-	cout << "Calculate " << a << "^"<< b << " = " << power(a,b) << endl;
-	cout << "Calculate " << a << "^"<< b << " = " << powerOptimised(a,b) << endl;
+	// int a = 2;
+	// int b = 5;
+	// cout << "Calculate " << a << "^"<< b << " = " << power(a,b) << endl;
+	// cout << "Calculate " << a << "^"<< b << " = " << powerOptimised(a,b) << endl;
+
+	int arr[] = {10,1,7,6,14,9};
+	int n = sizeof(arr)/sizeof(int);
+
+	cout << "Array Before Bubble Sort: " << endl;
+	for(int i=0;i<n;i++){
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+
+	BubbleSort(arr,n);
 
 
+	cout << "Array Before Bubble Sort: " << endl;
+	for(int i=0;i<n;i++){
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 
 
 
