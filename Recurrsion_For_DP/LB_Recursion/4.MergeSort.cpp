@@ -76,3 +76,62 @@ int main() {
 	}
 
 }
+
+
+// _______________________________________ LEETCODE SOLUTION_________________________________________________________
+
+class Solution {
+public:
+    
+    vector<int> merge(vector<int> &arr1, vector<int> &arr2){
+        
+        if (arr1.size() == 0 || arr2.size() == 0)
+            return arr1.size() == 0 ? arr2 : arr1;
+        
+        int n = arr1.size() + arr2.size();
+        vector<int> ans(n,0);
+        int i=0;
+        int j=0;
+        int k=0;
+        
+        while(i < arr1.size() && j < arr2.size()){
+            
+            if(arr1[i] <= arr2[j]){
+                ans[k++] = arr1[i++];
+                
+            }else{
+                ans[k++] = arr2[j++];
+               
+            }
+        }
+        
+        while(i < arr1.size()){
+            ans[k++] = arr1[i++];
+            
+        }
+        
+        while(j < arr2.size()){
+            ans[k++] = arr2[j++]; 
+        }
+        
+        return ans;
+        
+    }
+    
+    vector<int> mergeSort(vector<int> &nums, int si, int ei){
+        
+        if(si == ei){
+            vector<int> base;
+            base.push_back(nums[si]);
+            return base;
+        }
+        int mid = (si+ei)/2;
+        vector<int> fsh = mergeSort(nums,si,mid);
+        vector<int> ssh = mergeSort(nums,mid+1,ei);
+        return merge(fsh,ssh);
+    }
+    
+    vector<int> sortArray(vector<int>& nums) {
+        return mergeSort(nums,0,nums.size()-1);
+    }
+};
