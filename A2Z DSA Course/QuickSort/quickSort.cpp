@@ -22,7 +22,6 @@ void quickSort(vector<int> &arr, int si, int ei){
     if(si > ei){
         return;
     }
-
     int pivot = ei;
     int pidx = segregateData(arr,si,ei,pivot);
     quickSort(arr,si,pidx-1);
