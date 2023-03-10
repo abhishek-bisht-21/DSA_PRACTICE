@@ -22,10 +22,15 @@ void quickSort(vector<int> &arr, int si, int ei){
     if(si > ei){
         return;
     }
+
+    //int len = (ei-si+1);
+    //int pivot = rand() % len + si;
+
     int pivot = ei;
     int pidx = segregateData(arr,si,ei,pivot);
-    quickSort(arr,si,pidx-1);
-    quickSort(arr,pidx+1,ei);
+
+    quickSort(arr,si,pidx-1); // Left Half
+    quickSort(arr,pidx+1,ei); // Right Half 
 
 }
 
