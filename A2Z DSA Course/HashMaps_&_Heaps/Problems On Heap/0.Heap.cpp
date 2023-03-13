@@ -111,6 +111,7 @@ void heapify(vector<int> &arr, int n, int i){
     }
 }
 
+// Time Complexity of Building a Heap min/max -> O(N)
 vector<int> buildMinHeap(vector<int> &arr)
 {
     // Write your code here
