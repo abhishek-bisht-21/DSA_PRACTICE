@@ -69,7 +69,7 @@ class heap{
 		}
 };
 
-// Time Complexity is O(logn)
+// Time Complexity is O(logn). For 1 Based Indexing.
 void heapify(int arr[], int n, int i){
 	int largest = i;
 	int lci = 2*i;
@@ -89,6 +89,39 @@ void heapify(int arr[], int n, int i){
 	}
 
 }
+
+// Heapify Algorithm For 0 Based Indexing
+
+void heapify(vector<int> &arr, int n, int i){
+
+    int smallest = i;
+    int lci = 2*i+1;
+    int rci = 2*i+2;
+
+    if(lci < n && arr[smallest] > arr[lci]){
+        smallest = lci;
+    }
+    if(rci < n && arr[smallest] > arr[rci]){
+        smallest = rci;
+    }
+
+    if(smallest != i){
+        swap(arr[smallest],arr[i]);
+        heapify(arr,n,smallest);
+    }
+}
+
+vector<int> buildMinHeap(vector<int> &arr)
+{
+    // Write your code here
+    int n = arr.size();
+    for(int i=n/2-1;i>=0;i--){
+        heapify(arr,n,i);
+    }
+
+    return arr;
+}
+
 
 int main(){
 
