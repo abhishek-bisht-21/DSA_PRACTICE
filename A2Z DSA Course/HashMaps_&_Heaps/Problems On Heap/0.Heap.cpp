@@ -69,20 +69,55 @@ class heap{
 		}
 };
 
+// Time Complexity is O(logn)
+void heapify(int arr[], int n, int i){
+
+	cout << "Inside" << endl;
+	int largest = i;
+	int lci = 2*i;
+	int rci = 2*i+1;
+
+	if(lci < n && arr[largest] < arr[lci]){
+		largest = lci;
+	}
+
+	if(rci < n && arr[largest] < arr[rci]){
+		largest = rci;
+	}
+
+	if(largest != i){
+		swap(arr[largest], arr[i]); 
+		heapify(arr,n,largest);
+	}
+
+}
+
 int main(){
 
 	int size = 0;
-	cout << "Enter the size of Heap " << endl;
-	cin >> size;
-	heap h;
-	for(int i=0;i<size;i++){
-		int x;
-		cin>> x;
-		h.insert(x);
-	}
+	// cout << "Enter the size of Heap " << endl;
+	// cin >> size;
+	// heap h;
+	// for(int i=0;i<size;i++){
+	// 	int x;
+	// 	cin>> x;
+	// 	h.insert(x);
+	// }
 	
-	h.deletion();
-	h.print();
+	//h.deletion();
+	//h.print();
+
+	int a[6] = {-1,54,53,55,52,50};
+	int n = 5;
+	
+	for(int i = n/2; i > 0; i--){
+	  heapify(a,n,i); 
+	}
+
+	cout << "Printing the Array after heapify"<<endl; 
+	for(int i = 1; i<=n;i++){
+		cout<<a[i]<<" ";
+	}
 
 	return 0;
 }
