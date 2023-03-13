@@ -71,8 +71,6 @@ class heap{
 
 // Time Complexity is O(logn)
 void heapify(int arr[], int n, int i){
-
-	cout << "Inside" << endl;
 	int largest = i;
 	int lci = 2*i;
 	int rci = 2*i+1;
@@ -110,6 +108,9 @@ int main(){
 	int a[6] = {-1,54,53,55,52,50};
 	int n = 5;
 	
+	// We will only work for Internal Nodes.
+	// Internal Nodes are in the range: (0 to n/2)
+	// Leave Nodes are in the Range: (n/2 + 1 to n)
 	for(int i = n/2; i > 0; i--){
 	  heapify(a,n,i); 
 	}
