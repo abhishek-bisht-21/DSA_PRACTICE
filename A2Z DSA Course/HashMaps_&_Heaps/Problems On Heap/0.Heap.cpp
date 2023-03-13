@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 
@@ -75,11 +76,11 @@ void heapify(int arr[], int n, int i){
 	int lci = 2*i;
 	int rci = 2*i+1;
 
-	if(lci < n && arr[largest] < arr[lci]){
+	if(lci <= n && arr[largest] < arr[lci]){
 		largest = lci;
 	}
 
-	if(rci < n && arr[largest] < arr[rci]){
+	if(rci <= n && arr[largest] < arr[rci]){
 		largest = rci;
 	}
 
@@ -124,9 +125,24 @@ vector<int> buildMinHeap(vector<int> &arr)
 }
 
 
+// Heap Sort. Time Complexity: O(LogN). Assuming we have Max Heap.
+
+void heapSort(int arr[], int n){
+
+	int size = n;
+	while(size > 1){
+	// Step 1: Swap Root(1st Element) and Last element in the array
+	swap(arr[size], arr[1]);
+	// Step 2: Decrease the Size of the Array
+	size--;
+	// Step 3: Bring the Root Node to its correct position. 
+	heapify(arr,size,1);
+	}
+}
+
 int main(){
 
-	int size = 0;
+	// int size = 0;
 	// cout << "Enter the size of Heap " << endl;
 	// cin >> size;
 	// heap h;
@@ -150,6 +166,13 @@ int main(){
 	}
 
 	cout << "Printing the Array after heapify"<<endl; 
+	for(int i = 1; i<=n;i++){
+		cout<<a[i]<<" ";
+	}
+	cout << endl;
+	// Heap Sort
+	heapSort(a,n);
+	cout << "Printing the Array after Sorting"<<endl; 
 	for(int i = 1; i<=n;i++){
 		cout<<a[i]<<" ";
 	}
