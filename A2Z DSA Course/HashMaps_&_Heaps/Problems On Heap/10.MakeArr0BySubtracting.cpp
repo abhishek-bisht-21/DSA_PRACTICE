@@ -13,7 +13,7 @@ int minimumOperations(vector<int>& nums) {
                 curr_min += tp;
                 ans++;
             }
-            minH.pop();
+            minH.pop();  
         }
     }
     return ans;
