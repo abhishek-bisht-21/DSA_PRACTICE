@@ -1,4 +1,4 @@
-
+// Approach 1 TC-> (n*k)log(n*k)
 // Merge k Sorted Arrays
 class Solution
 {
@@ -26,3 +26,6 @@ class Solution
     
     }
 };
+
+
+// Approach 2: Optimised TC-> (n*k)logk
