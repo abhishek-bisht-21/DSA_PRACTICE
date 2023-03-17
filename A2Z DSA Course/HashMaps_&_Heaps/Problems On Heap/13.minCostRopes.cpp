@@ -24,6 +24,6 @@ class Solution
             pq.push(min1+min2);
         }
         
-        return cost;
+        return cost; 
     }
 };
