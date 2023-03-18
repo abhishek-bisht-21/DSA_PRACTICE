@@ -1,4 +1,7 @@
 // 632. Smallest Range Covering Elements from K Lists
+// Time-complexity: O(nk * logk)
+// Space-complexity: O(k)
+
 class Solution {
 public:
     struct node {
