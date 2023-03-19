@@ -9,7 +9,7 @@ class Solution{
         // Your code here
         int maxLen = 0;
         unordered_map<int, int> m; // sum,index
-        m[0] = -1;
+        m[0] = -1; // It is neccessary when we will encounter Sum=0 for 1st time.
         int sum=0;
         
         for(int i=0;i<n;i++){
