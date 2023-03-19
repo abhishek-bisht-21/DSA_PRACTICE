@@ -56,14 +56,24 @@ class heap{
 
 	}
 
-	int pop(){
-
+	// TC-> O(Logn)
+	int pop(){ 
+		int rEle = arr[0];
+		// Step1: Swap Root Element and Last Element
+		swap(arr[0],this->arr[arr.size()-1]);
+		// Step2: Remove Last Element Now
+		this->arr.size()--;
+		// Call Down Heapify till it becomes a valid Heap.
+		downHeapify(0);
+		return rEle;
 	}
 
+	// TC -> O(1)
 	int top(){
-
+		return this->arr[0];
 	}
 
+	// TC-> Logn
 	private void downHeapify(int pi){ // pi -> parentIdx
 		int maxIdx = pi;
 		int lci = 2*i+1;
