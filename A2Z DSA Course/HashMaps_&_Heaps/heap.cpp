@@ -30,6 +30,20 @@ void heap(vector<int> arr, bool isMaxHeap){
 
 class heap{
 
+	public:
+
+	vector<int> arr;
+	bool isMaxHeap = true;
+
+	void constructHeap(){
+		for(int i=arr.size()/2-1;i>=0;i--){
+			downHeapify(i){
+
+			}
+		}
+	}
+
+
 	int size(){
 
 	}
@@ -48,5 +62,25 @@ class heap{
 
 	int top(){
 
+	}
+
+	private void downHeapify(int pi){ // pi -> parentIdx
+		int maxIdx = pi;
+		int lci = 2*i+1;
+		int rci = 2*i+2;
+
+		if(lci < arr.size() && arr[lci] > arr[maxIdx]){
+			maxIdx = lci;
+		}
+
+		if(rci < arr.size() &&  arr[rci] > arr[maxIdx]){
+			maxIdx = rci;
+		}
+
+		if(maxIdx != pi){
+			swap(arr[maxIdx], arr[pi]);
+			pi = maxIdx;
+			downHeapify(pi);
+		}
 	}
 }
