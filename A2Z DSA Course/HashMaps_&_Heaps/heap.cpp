@@ -3,7 +3,15 @@
 
 using namespace std;
 
-bool isMaxHeap = true;
+
+class heap{
+
+	public:
+
+	bool isMaxHeap = true;
+
+	vector<int> arr;
+	bool isMaxHeap = true;
 
 void defaultValue(bool isMaxHeap){
  vector<int> arr;
@@ -26,15 +34,11 @@ void heap(vector<int> arr, bool isMaxHeap){
 	for(int ele: arr){
 		this.arr.push_back(ele);
 	}
+
+	constructHeap();
 }
 
-class heap{
-
-	public:
-
-	vector<int> arr;
-	bool isMaxHeap = true;
-
+	// TC-> O(N)
 	void constructHeap(){
 		for(int i=arr.size()/2-1;i>=0;i--){
 			downHeapify(i){
