@@ -30,6 +30,7 @@ void heap(bool isMaxHeap){
 
 // Already there will be an array and also we will mention What Heap we want.
 void heap(vector<int> arr, bool isMaxHeap){
+	
 	defaultValue(isMaxHeap);
 	for(int ele: arr){
 		this.arr.push_back(ele);
@@ -64,9 +65,9 @@ void heap(vector<int> arr, bool isMaxHeap){
 	int pop(){ 
 		int rEle = arr[0];
 		// Step1: Swap Root Element and Last Element
-		swap(arr[0],this->arr[arr.size()-1]);
+		swap(this->arr[0],this->arr[arr.size()-1]);
 		// Step2: Remove Last Element Now
-		this->arr.size()--;
+		this->arr.pop_back();
 		// Call Down Heapify till it becomes a valid Heap.
 		downHeapify(0);
 		return rEle;
@@ -83,16 +84,16 @@ void heap(vector<int> arr, bool isMaxHeap){
 		int lci = 2*i+1;
 		int rci = 2*i+2;
 
-		if(lci < arr.size() && arr[lci] > arr[maxIdx]){
+		if(lci < this->arr.size() && arr[lci] > arr[maxIdx]){
 			maxIdx = lci;
 		}
 
-		if(rci < arr.size() &&  arr[rci] > arr[maxIdx]){
+		if(rci < this->arr.size() &&  arr[rci] > arr[maxIdx]){
 			maxIdx = rci;
 		}
 
 		if(maxIdx != pi){
-			swap(arr[maxIdx], arr[pi]);
+			swap(this->arr[maxIdx], this->arr[pi]);
 			pi = maxIdx;
 			downHeapify(pi);
 		}
