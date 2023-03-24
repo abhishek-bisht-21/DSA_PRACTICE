@@ -50,15 +50,18 @@ void heap(vector<int> arr, bool isMaxHeap){
 
 
 	int size(){
-
+		return this->arr.size();
 	}
 
 	bool isEmpty(){
-
+		return this->arr.size() == 0;
 	}
 
-	void push(){
-
+	// TC -> O(logN)
+	void push(int data){
+		this->arr.push_back(data);
+		int n = this->arr.size();
+		upHeapify(n-1);
 	}
 
 	// TC-> O(Logn)
@@ -96,6 +99,16 @@ void heap(vector<int> arr, bool isMaxHeap){
 			swap(this->arr[maxIdx], this->arr[pi]);
 			pi = maxIdx;
 			downHeapify(pi);
+		}
+	}
+
+	// TC -> O(logN)
+	private void upHeapify(int ci){
+		int pi = (ci-1)/2;
+
+		if(pi >= 0 and this->arr[ci] > this->arr[pi]){
+			swap(pi,ci);
+			upHeapify(pi);
 		}
 	}
 }
