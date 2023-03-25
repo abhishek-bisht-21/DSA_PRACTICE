@@ -6,7 +6,7 @@
 using namespace std;
 
 
-bool compareTo(vector<int> &arr, bool isIncreasingint i, int j){
+bool compareTo(vector<int> &arr, bool isIncreasing,int i, int j){
 	if(isIncreasing){
 		return arr[i] > arr[j];
 	}else{
@@ -14,7 +14,7 @@ bool compareTo(vector<int> &arr, bool isIncreasingint i, int j){
 	}
 }
 
-voi downHeapify(vector<int> &arr, bool isIncreasing, int pIdx, int li){
+void downHeapify(vector<int> &arr, bool isIncreasing, int pIdx, int li){
 
 	int lci = 2*pIdx+1;
 	int rci = 2*pIdx+2;
@@ -50,7 +50,11 @@ int main(){
 	vector<int> arr = {10,20,30,-2,-3,-4,5,6,7,8,9,22,11,13};
 	
 	// inc/dec sorted
-	heapSort(arr,true);
+	heapSort(arr,false);
+
+	for(int ele:arr){
+		cout << ele << endl;
+	}
 
 	return 0;
 }
