@@ -8,7 +8,7 @@ int powerOptimised(int a, int b){
 		return 1;
 	}
 
-	int smallAns = powerOptimised(a , b/2);
+	int smallAns = powerOptimised(a,b/2);
 	int myAns = smallAns * smallAns;
 	if(b % 2 == 1){
 		myAns *= a; 
