@@ -13,13 +13,16 @@ public:
     }
     
     long long countExcellentPairs(vector<int>& nums, int k) {
+		// Removing Duplicates
         unordered_set<int> s(nums.begin(),nums.end());
         vector<int> v;
+		// Storing set bits in vector v
         for(auto& i: s){
             int x = setbits(i);
             v.push_back(x);
         }
 
+		// Sorting the vector so that we can apply BinarySearch or Lower_bound
         sort(v.begin(),v.end());
         
         	//Now for each set bit x find a corresponding set bit y such that x + y >= k
