@@ -23,6 +23,18 @@ void insertAtBottom(stack<int> &st, int x){
 	}
 }
 
+void insertAtBottomRecursively(stack<int> &st, int x){
+	if(st.empty()){
+		st.push(x);
+		return;
+	}
+
+	int curr = st.top();
+	st.pop();
+	insertAtBottomRecursively(st,x);
+	st.push(curr);
+}
+
 void printStack(stack<int> st){
 
 	while(!st.empty()){
@@ -41,7 +53,8 @@ int main(){
 
 	cout << "Stack Before Inserting at bottom: "<< endl;
 	printStack(st);
-	insertAtBottom(st,10);
+	//insertAtBottom(st,10);
+	insertAtBottomRecursively(st,10);
 	cout << "Stack after inserting at bottom: " << endl;
 	printStack(st);
 
