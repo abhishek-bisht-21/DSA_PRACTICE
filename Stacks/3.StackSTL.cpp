@@ -14,5 +14,6 @@ int main()
 	cout << "Top Element: " << st.top() << endl;				
 	st.push(8);
 	st.push(5);
+	cout << "Is Stack Empty: " << boolalpha << st.empty() << endl;
 	return 0;
 }
