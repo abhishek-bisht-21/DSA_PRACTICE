@@ -31,6 +31,18 @@ void printStack(stack<int> st){
 	}
 }
 
+// Using Call Stack in recursion as Temporary Stack
+void copyStackRec(stack<int> &input, stack<int> &result){
+	if(input.empty()){
+		return;
+	}
+
+	int curr = input.top();
+	input.pop();
+	copyStackRec(input,result);
+	result.push(curr);
+}
+
 int main(){
 
 	stack<int> st;
@@ -42,7 +54,9 @@ int main(){
 	cout << "Original Stack content: " << endl;
 	printStack(st);
 
-	stack<int> res = copyStack(st);
+	//stack<int> res = copyStack(st);
+	stack<int> res;
+	copyStackRec(st,res);
 	cout << "Copied Stack content: " << endl;
 	printStack(res);
 
