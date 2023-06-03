@@ -1,3 +1,4 @@
+// TC-> O(N) SC -> O(N)
 #include <iostream>
 #include <stack>
 
