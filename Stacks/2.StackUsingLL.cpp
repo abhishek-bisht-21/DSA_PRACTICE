@@ -1,3 +1,5 @@
+// Insert at head and remove from head. 
+
 #include <bits/stdc++.h>
 using namespace std;
 
