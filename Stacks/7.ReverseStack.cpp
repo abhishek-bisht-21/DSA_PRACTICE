@@ -1,4 +1,4 @@
-// TC -> N, SC -> N
+// TC -> N^2, SC -> N
 
 class Solution{
 public:
