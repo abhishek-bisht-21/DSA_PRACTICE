@@ -15,6 +15,6 @@ public:
         
         ans = ((p1-1) * (p2-1));
         
-        return ans;
+        return ans; 
     }
 };
