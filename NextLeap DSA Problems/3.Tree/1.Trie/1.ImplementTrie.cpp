@@ -10,6 +10,7 @@ public:
 
 
         void put(char ch, Node* node){
+	    // New Character = its Reference trie.
             links[ch - 'a'] = node;
         }
 
@@ -35,17 +36,21 @@ public:
     
     // tc-> O(len of word)
     void insert(string word) {
+	// Dummy variable node which initially points to the root.
         Node* node = root;
-
+	  // We need to insert every character.
+        // We are checking that a character(word[i]) exist in our Trie 
         for(int i=0;i<word.length();i++){
             if(!node->containsKey(word[i])){
+		// If character doesnot exist.
+		// Put the reference trie against that character.
                 node->put(word[i], new Node());
             }
 
-            // Moves to the reference Trie
+            // Moves to the reference Trie.
             node = node->get(word[i]);
         }
-
+	// Node will be standing at the last reference trie.
         node->setEnd();
     }
     
