@@ -116,3 +116,35 @@ public:
         return ans;
     }
 };
+
+
+// Approach 4: Recursive Solution. Reverse Preorder (Root Right Left)
+
+class Solution {
+public:
+
+    // Since we are moving Right at first, therefore ensures that it is first 
+    //node from right or right most node Of that particular level.
+    void reversePreOrderHelper(TreeNode* root, int level, vector<int> &ans){
+        if(root == NULL){
+            return;
+        }
+
+        // First Time we are coming across any level.
+        if(level == ans.size()){
+            ans.push_back(root->val);
+        }
+
+        if(root->right)
+            reversePreOrderHelper(root->right,level+1,ans);
+        if(root->left)
+            reversePreOrderHelper(root->left,level+1,ans);
+    }
+
+    vector<int> rightSideView(TreeNode* root) {
+        int level = 0;
+        vector<int> ans;
+        reversePreOrderHelper(root,level,ans);    
+        return ans;
+    }
+};
