@@ -1,6 +1,6 @@
 
 
-// APPROACH 1:
+// APPROACH 1: Level Order Traversal. Last Node in every level is the right most node.
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
@@ -13,6 +13,8 @@ public:
         while(!q.empty()){
             int size = q.size();
             while(size > 0){
+                // When only 1 node is left in the tree it means it is the right most node
+                // of that level. Hence we are storing it in the array    
                 if(size == 1){
                     ans.push_back(q.front()->val);
                 }
@@ -80,7 +82,8 @@ class Solution
     }
 };
 
-// APPROACH 3:
+// APPROACH 3: Reverse Level Order Traversal. We are Traversing each level from right to left.
+// Hence the first node at every level is the right view of the TRee.
 
 class Solution {
 public:
