@@ -35,3 +35,24 @@ public:
 
     }
 };
+
+
+// Approach 2: We are doing a preOrder traversal and storing the elements we have
+// visisted till now in a set and then checking whether (Target-root->val)
+// is present in the set or not. In that way we will know whether a valid pair 
+// exists or not.
+
+class Solution {
+public:
+
+    set<int> s;
+    bool findTarget(TreeNode* root, int k) {
+        if(root == nullptr){
+            return false;
+        }
+
+        if(s.find(k-root->val) != s.end()) return true;
+        s.insert(root->val);    
+        return findTarget(root->left,k) || findTarget(root->right,k);
+    }
+};
