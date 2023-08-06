@@ -52,7 +52,11 @@ public:
         }
 
         if(s.find(k-root->val) != s.end()) return true;
-        s.insert(root->val);    
+        s.insert(root->val);
+	// We are checking the left subtree and then Right subtree post that.
+	// 1. Both Pair of nodes can be found in leftsubtree only
+	// 2. Both Pair of nodes can be found in RightSUbtree only.
+	// 3. Pair of nodes can be found: 1 in lst and other in rst.    
         return findTarget(root->left,k) || findTarget(root->right,k);
     }
 };
