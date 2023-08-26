@@ -66,6 +66,32 @@ class heap{
 	  }
 
 
+	  // Leaf Nodes are from Index (N/2+1 to N). And since they are leaf nodes, they need not
+	  // to be processed, cause they individually are heap.
+	 // We will process elements from index (n/2 to 0), for these index we will call Heapify function.
+	
+	// Heapify function Takes the index(i) to it's correct position. 
+	void heapify(int arr[], int n, int i){
+		int largest = i;
+		int left = 2*i;
+		int right = 2*i+1;
+
+		if(left < n && arr[largest] < arr[left]){
+			largest = left;
+		}
+
+		if(right < n && arr[largest] < arr[right]){
+			largest = right;
+		}
+
+
+		if(largest != i){
+			swap(arr[largest], arr[i]);
+			heapify(arr,n,largest);
+		}
+	}
+
+	  
 	  void print(){
 		for(int i=1;i<=size;i++){
 			cout << arr[i] << " ";
