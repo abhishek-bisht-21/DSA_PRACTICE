@@ -71,6 +71,7 @@ class heap{
 	 // We will process elements from index (n/2 to 0), for these index we will call Heapify function.
 	
 	// Heapify function Takes the index(i) to it's correct position. 
+	// O(logn)
 	void heapify(int arr[], int n, int i){
 		int largest = i;
 		int left = 2*i;
@@ -124,6 +125,7 @@ int main(){
 
 	cout << "printing array elements: "<< endl;
 
+	// O(N)
 	for(int i=1;i<=n;i++){
 		cout << arr[i] << " ";
 	}
