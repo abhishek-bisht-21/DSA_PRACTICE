@@ -7,10 +7,10 @@ Sort the array TC -> n*kO(n*k)
 */
 
 
-// Approach 2
+// Approach 2 
+//TC -> O(n*klogk) + O(klogk) => O(n*klogk)
+// SC -> o(k)
 
-
- 
     class Node{
         public: 
         int data;
@@ -49,6 +49,8 @@ class Solution
         vector<int> ans;
         
         // Step2: Pop the smallest element and push next element in that row in the heap.
+	// Remaining array elements n*k-k => n*k
+	// Assumming n elements in the every array and k arrays are there.
         // TC -> O(n*klogk)
         while(!minHeap.empty()){
             
