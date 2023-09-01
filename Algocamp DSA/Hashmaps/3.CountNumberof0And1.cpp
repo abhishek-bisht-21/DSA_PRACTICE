@@ -8,7 +8,7 @@ class Solution{
         
         int sum = 0;
         long long int ans = 0;
-        unordered_map<int, int> umap;
+        unordered_map<int, int> umap; // Sum and Frequency
         umap[0] = 1;
         
         for(int i=0;i<n;i++){
@@ -18,6 +18,8 @@ class Solution{
                 sum+=1;
             }
             
+	    // If the sum is getting repeated it means that there is/are subarrays
+	    // between which have subarray sum as 0. So we are adding them in the ans 
             if(umap.find(sum) != umap.end()){
                 ans += umap[sum];
                 umap[sum]++;
