@@ -8,7 +8,7 @@ class Solution{
         
         int sum = 0;
         long long int ans = 0;
-        unordered_map<int, int> umap; // Sum and Frequency
+        unordered_map<int, int> umap; // Sum and freq
         umap[0] = 1;
         
         for(int i=0;i<n;i++){
