@@ -19,7 +19,7 @@ class Solution{
             }
             
 	    // If the sum is getting repeated it means that there is/are subarrays
-	    // between which have subarray sum as 0. So we are adding them in the ans 
+	    // between which have subarray having equal 0 and 1. So we are adding them in the ans 
             if(umap.find(sum) != umap.end()){
                 ans += umap[sum];
                 umap[sum]++;
