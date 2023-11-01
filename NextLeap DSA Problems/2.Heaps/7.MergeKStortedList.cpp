@@ -16,7 +16,7 @@ public:
                 prev->next = c2;
                 c2 = c2->next;
             }
-            prev = prev->next;
+            prev = prev->next
         }
 
         prev->next = c1 != nullptr ? c1 : c2;
