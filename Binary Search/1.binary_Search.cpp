@@ -27,7 +27,7 @@ int findEle(int *arr, int n, int x){
 }
 
 int findEle_Recursive(int *arr, int low, int high,int target){
-	if(low <= high){
+	if(low > high){
 		return -1;
 	}
 
