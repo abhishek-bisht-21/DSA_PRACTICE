@@ -1,6 +1,7 @@
 // Upper Bound -> First element which is greater than X.
 /*
 
+TC = O(logn)
 arr = [1,3,4,6,6,7,9,10]
 
 x = 6, ub = 7
