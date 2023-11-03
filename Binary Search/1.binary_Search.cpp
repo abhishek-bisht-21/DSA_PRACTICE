@@ -26,6 +26,23 @@ int findEle(int *arr, int n, int x){
 	return -1;
 }
 
+int findEle_Recursive(int *arr, int low, int high,int target){
+	if(low <= high){
+		return -1;
+	}
+
+	int mid = low + (high-low)/2;
+
+	if(target == arr[mid]){
+		return mid;
+	}
+	else if(target > arr[mid])
+	{
+		return findEle_Recursive(arr, mid+1, high, target);
+	}
+	return findEle_Recursive(arr, low,mid-1, target);
+}
+
 
 int main(){
 
