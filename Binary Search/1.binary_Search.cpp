@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Time Complexity: O(logn) of Binary Search
+
 int findEle(int *arr, int n, int x){
 
 	int low = 0;
