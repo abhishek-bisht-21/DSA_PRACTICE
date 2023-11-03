@@ -24,7 +24,7 @@ int upperBound(int *arr, int n, int x){
 	while(low <= high){
 		int mid = (low+high)/2;
 
-		if(arr[mid] <= x){
+		if(arr[mid] > x){
 			
 			low = mid+1;
 		}else{
