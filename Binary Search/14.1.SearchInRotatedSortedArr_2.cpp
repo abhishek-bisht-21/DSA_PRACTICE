@@ -6,6 +6,10 @@ condition we will keep trimming down our search space.
 
 Rest of the code is exactly same as previous question.
 
+Example: 3 1 2 3 3 3 
+Target 
+int mid = (0 + 5) / 2 => 2
+arr[low] == arr[mid] == arr[high] Because of this we cannot successfully identify the Sorted Half
 */
 
 class Solution {
