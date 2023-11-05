@@ -9,7 +9,8 @@ Rest of the code is exactly same as previous question.
 Example: 3 1 2 3 3 3 
 Target 
 int mid = (0 + 5) / 2 => 2
-arr[low] == arr[mid] == arr[high] Because of this we cannot successfully identify the Sorted Half
+arr[low] == arr[mid] == arr[high] Because of this we cannot successfully identify the Sorted Half.
+Therefore we will shrink our search space and again try to find it.
 */
 
 class Solution {
