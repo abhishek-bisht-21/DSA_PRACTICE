@@ -1,3 +1,13 @@
+/*
+
+arr[mid] == arr[low] && arr[mid] == arr[high] This is the condition which is causing the problem
+and we are not able to decide which half we have to eliminate therefore, whenever we get this 
+condition we will keep trimming down our search space.
+
+Rest of the code is exactly same as previous question.
+
+*/
+
 class Solution {
 public:
     bool search(vector<int>& arr, int target) {
