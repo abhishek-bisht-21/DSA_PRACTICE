@@ -8,42 +8,34 @@
 
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
-        
-        int n = nums.size();
-        int si = 0;
-        int ei = n-1;
-        
-        while(si <= ei){
-            int mid = (si+ei)/2;
-            
-            if(nums[mid] == target){
+    int search(vector<int>& arr, int target) {
+        int n = arr.size();
+        int low = 0;
+        int high = n-1;
+
+        while(low <= high){
+            int mid = (low + high)/2;
+            // If the left part is sorted
+            if(arr[mid] == target){
                 return mid;
             }
-	
-		// If the left part is sorted
-             else if(nums[si] <= nums[mid]){
-
-		// either it lies in the left part or not    
-                if(nums[si] <= target && target <= nums[mid]){
-                    ei = mid - 1;
+            else if(arr[mid] >= arr[low]){
+                // either it lies in the left part or not  
+                if(arr[low] <= target && target <= arr[mid]){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
                 }
-                else{
-                    si = mid + 1;
+            }else{
+                // either it lies in the right part or not  
+                if(arr[mid] <= target && target <= arr[high]){
+                    low = mid+1;
+                }else{
+                    high = mid-1;
                 }
             }
-            else{
-
-		// either it lies in the right part or not  
-                if(nums[mid] < target && target <= nums[ei]){
-                    si = mid+1;
-                }
-                else{
-                    ei = mid - 1;
-                }
-            }   
         }
-        
+
         return -1;
     }
 };
