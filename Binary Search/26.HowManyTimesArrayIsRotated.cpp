@@ -11,7 +11,7 @@ int findKRotation(vector<int> &arr){
     int low = 0;
     int high = arr.size()-1;
     int ans = 10e9+7;
-    int index = -1;
+    int index = -1; // Storing the probable index of the smallest element of the Rotated Sorted Array.
     
     while(low <= high){
         int mid = (low+high)/2;
