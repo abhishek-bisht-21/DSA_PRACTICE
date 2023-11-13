@@ -1,10 +1,8 @@
 
 // 875. Koko Eating Bananas
-
+// TC => O(n* log(max-min+1))
 /*
-
 We know the range in which our answer would lie
-
 */
 // Appraoch 1
 class Solution {
