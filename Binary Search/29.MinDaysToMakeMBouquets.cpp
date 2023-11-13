@@ -1,4 +1,4 @@
-
+// TC ->  O(N* log(max-min+1))
 
 class Solution {
 public:
