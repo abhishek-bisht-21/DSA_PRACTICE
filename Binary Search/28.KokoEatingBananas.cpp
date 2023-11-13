@@ -11,13 +11,13 @@ class Solution {
 public:
     
     
-     bool isfeasible(vector<int>& piles, int h,int mid)
+     bool isfeasible(vector<int>& piles, int totalHours,int bananaEatenPerHour)
     {
-        double ans = 0;
+        double hoursTaken = 0;
         for(auto p : piles)
-            ans += ceil(p*1.0/mid);
+            hoursTaken += ceil(p*1.0/bananaEatenPerHour);
         
-        return ans <= h;
+        return ans <= totalHours;
     }
     
     int minEatingSpeed(vector<int>& piles, int h) {
