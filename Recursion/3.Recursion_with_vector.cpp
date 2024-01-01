@@ -1,4 +1,4 @@
-
+#include <bits/stdc++.h>
 
 
 
@@ -59,7 +59,7 @@ vector<string> getKPC(string s){
     for(int i=0; i<keypad[idx].size(); i++){ // Loop will run till the size of the string at that particular index.
 
         char c = keypad[idx].at(i); // Taking out each character one by one, present at that particular index of Keypad
-
+ 
         for(int j=0; j<small_ans.size(); j++){ // Cartesian product with existing ans, which recursion has brought to us.
             string str = small_ans[j];
             string final = c + str;
