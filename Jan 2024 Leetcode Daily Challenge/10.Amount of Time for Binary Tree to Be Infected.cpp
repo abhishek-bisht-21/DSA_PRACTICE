@@ -12,7 +12,7 @@
  * };
  */
 
-
+#include <bits/stdc++.>
 class Solution {
 public:
     unordered_map<int, vector<int>> graph;
