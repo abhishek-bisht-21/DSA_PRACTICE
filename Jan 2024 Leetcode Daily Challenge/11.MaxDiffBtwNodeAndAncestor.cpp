@@ -14,7 +14,7 @@
  * };
  */
 class Solution {
-public:
+public: 
     int maxAncestorDiff(TreeNode* root) {
         if (!root)
             return 0;
