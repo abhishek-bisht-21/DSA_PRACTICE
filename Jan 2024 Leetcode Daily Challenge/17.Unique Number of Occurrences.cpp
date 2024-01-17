@@ -1,5 +1,6 @@
 // 1207. Unique Number of Occurrences
 
+#include <bits/stdc++.h>
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
