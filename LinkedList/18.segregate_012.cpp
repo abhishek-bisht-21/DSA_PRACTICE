@@ -37,3 +37,46 @@ class Solution
         return zero->next;
     }
 };
+
+
+// Approach 2: Count 0,1,2 and replace them in LL
+
+Node* sortList(Node *head){
+    // Write your code here.
+
+    int count0 = 0;
+    int count1 = 0;
+    int count2 = 0;
+    Node* temp = head;
+
+    while(temp){
+        if(temp->data == 0){
+            count0++;
+        }else if(temp->data == 1){
+            count1++;
+        }else{
+            count2++;
+        }
+
+        temp = temp->next;
+    }
+
+    temp = head;
+
+    while(temp){
+        if(count0){
+            temp->data = 0;
+            count0--;
+        }else if(count1){
+            temp->data = 1;
+            count1--;
+        }else{
+            temp->data = 2;
+            count2--;
+        }
+
+        temp = temp->next;
+    }
+
+    return head;
+}
