@@ -70,3 +70,31 @@ public:
         return th;
     }
 };
+
+
+
+// Approach 3
+
+Node * removeDuplicates(Node *head)
+{
+
+    // Initialize 'cur' to store head
+    Node * cur = head;
+
+    // Run a while loop
+    while (cur != NULL && cur -> next != NULL) {
+
+        // Next element has same value as the current element
+        if (cur -> next -> data == cur -> data) {
+            // Adjust links to remove the next element
+            cur -> next = cur -> next -> next;
+        }
+
+        // Next element is different from the current element
+        else {
+            cur = cur -> next;
+        }
+    }
+
+    return head;
+}
