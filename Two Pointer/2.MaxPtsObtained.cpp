@@ -36,3 +36,34 @@ public:
         return answer;
     }
 };
+
+// Approach 2: Using 2 Pointers (Acquire and Release)
+
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        int leftSum = 0;
+        int rightSum = 0;
+
+        int maxSum = INT_MIN;
+        int sum = 0;
+
+        for(int i=0;i<k;i++){
+            leftSum += cardPoints[i];
+        }
+
+        maxSum = leftSum;
+
+        int n = cardPoints.size();
+        int rightIdx = n-1;
+
+        for(int i=k-1;i>= 0;i--){
+            leftSum-=cardPoints[i];
+            rightSum += cardPoints[rightIdx--]; 
+            maxSum = max(maxSum, leftSum+rightSum);
+        }
+
+        return maxSum;
+        
+    }
+};
