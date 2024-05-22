@@ -1,5 +1,5 @@
 // 904. Fruit Into Baskets -> Max len Subarray with at most 2 typpes of numbers
-
+// TC -> O(2*N), SC -> O(2). Map size is small so Log(2) ~ Log(3) == 1
 class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
@@ -34,5 +34,42 @@ public:
         }
         // returning the maximum subarray length
         return ans;
+    }
+};
+
+
+
+// Optimal Solution
+// TC -> O(N)
+// Once we get a maxLength We are not allowing it go further than that till we have valid condition.
+
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        unordered_map<int, int> mpp;
+        int left = 0;
+        int right = 0;
+
+        int n = fruits.size();
+        int maxLen = 0;
+
+        while(right < n){
+            mpp[fruits[right]]++;
+
+            if(mpp.size() > 2){
+                mpp[fruits[left]]--;
+                if(mpp[fruits[left]] == 0) mpp.erase(fruits[left]);
+                left++;
+            }
+
+            if(mpp.size() <= 2){
+                maxLen = max(maxLen, right - left + 1);
+            }
+
+            right++;
+        }
+
+
+        return maxLen;
     }
 };
