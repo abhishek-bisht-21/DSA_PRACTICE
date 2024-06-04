@@ -1,3 +1,22 @@
+// Approach 1: Sorting + 4 Variables(last_smaller, current, longest, cnt)
+// TC -> O(nlogn + n)
+/**
+ * sort(arr.begin(), arr.end())
+ * for(i=0 -> n){
+ * 	if(arr[i] - 1 == last_smaller){
+ * 		cnt += 1
+ * 		last_smaller = arr[i]
+ * 	}
+ * 	else if(arr[i] != last_smaller){
+ * 		cnt = 1
+ * 		last_smaller = arr[i]
+ * 	}
+ * 
+ * 	longest = max(longest,cnt)
+ * }
+*/
+
+
 // https://leetcode.com/problems/longest-consecutive-sequence/
 
 class Solution {
