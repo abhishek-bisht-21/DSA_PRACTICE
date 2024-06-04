@@ -8,7 +8,7 @@
  * 		last_smaller = arr[i]
  * 	}
  * 	else if(arr[i] != last_smaller){
- * 		cnt = 1
+ * 		cnt = 1   
  * 		last_smaller = arr[i]
  * 	}
  * 
